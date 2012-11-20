@@ -35,11 +35,11 @@ buoys = [
     name: 'Eden'
     url: 'http://mhl.nsw.gov.au/data/edeno.gif'
   }
-  {
-    slug: 'crowdy-head'
-    name: 'Crowdy Head'
-    url: 'http://mhl.nsw.gov.au/data/crowdy.gif'
-  }
+  # {
+  #   slug: 'crowdy-head'
+  #   name: 'Crowdy Head'
+  #   url: 'http://mhl.nsw.gov.au/data/crowdy.gif'
+  # }
 ]
 
 
