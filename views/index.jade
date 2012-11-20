@@ -1,10 +1,7 @@
 extends layout
 
 block body
-  div(ng-controller='BuoysCtrl')
-    h1 Buoys
-
-    pre {{buoys}}
+  div(ng-view)
 
   != js('lib/angular/angular')
   != js('app')

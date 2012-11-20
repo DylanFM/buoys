@@ -9,9 +9,10 @@ app.configure ->
   app.set 'view engine', 'jade'
   app.use require('connect-assets')()
 
-# App routes
-
+# Routes
 app.get '/', routes.index
+
+app.get '/partials/:name', routes.partials # Angular templates
 
 app.get '/api/buoys.json', apiRoutes.buoys
 app.get '/api/buoys/:slug.json', apiRoutes.buoy
