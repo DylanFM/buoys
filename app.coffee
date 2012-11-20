@@ -13,6 +13,7 @@ app.configure ->
 app.get '/', routes.index
 
 app.get '/api/buoys.json', apiRoutes.buoys
+app.get '/api/buoys/:slug.json', apiRoutes.buoy
 
 app.get '*', routes.index
 

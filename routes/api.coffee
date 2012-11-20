@@ -12,3 +12,7 @@ exports.buoys = (req, res) ->
     multi.exec (err, response) ->
       # Return collection of buoys as JSON
       res.json(response)
+
+exports.buoy = (req, res) ->
+  client.hgetall "buoys:#{req.params.slug}", (err, response) ->
+    res.json(response)
