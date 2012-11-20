@@ -1,6 +1,5 @@
 redis = require 'redis'
 
-
 class Buoy
 
   @all: (done) ->
@@ -12,13 +11,18 @@ class Buoy
       multi.hgetall "buoys:#{slug}" for slug in slugs
       multi.exec (err, response) ->
         client.quit()
-        done(err, response)
+        done err, response
 
   @findBySlug: (slug, done) ->
     client = redis.createClient()
-    client.hgetall "buoys:#{slug}", (err, response) ->
-      client.quit()
-      done(err, response)
+    client.multi()
+      .hgetall("buoys:#{slug}")
+      .hgetall("buoys:#{slug}:latest")
+      .exec (err, response) ->
+        client.quit()
+        buoy = response[0] # 1st member should be the buoy data
+        buoy.latest = response[1] # 2nd member is the latest reading
+        done err, buoy
 
 
 module.exports = Buoy

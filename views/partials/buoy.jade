@@ -1,3 +1,14 @@
 a(href="/", title="Go back to the buoys list") Back
 h1 {{buoy.name}}
+dl
+  dt Direction
+  dd {{buoy.latest.direction}}
+  dt Hmax
+  dd {{buoy.latest.hmax}}
+  dt Hsig
+  dd {{buoy.latest.hsig}}
+  dt Tsig
+  dd {{buoy.latest.tsig}}
+  dt Tp1
+  dd {{buoy.latest.tp1}}
 img(src="{{buoy.url}}")
