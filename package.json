@@ -1,0 +1,25 @@
+{
+  "name": "buoys",
+  "version": "0.0.0",
+  "description": "An alternative view for MHL buoys.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DylanFM/buoys.git"
+  },
+  "keywords": [
+    "surf",
+    "surfing",
+    "weather",
+    "buoys",
+    "Australia",
+    "NSW"
+  ],
+  "author": "Dylan Fogarty-MacDonald",
+  "license": "MIT",
+  "dependencies": {
+    "express": "3.x"
+  }
+}
