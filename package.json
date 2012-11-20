@@ -22,6 +22,8 @@
   "dependencies": {
     "express": "3.x",
     "jade": "~0.27.7",
-    "redis": "~0.8.2"
+    "redis": "~0.8.2",
+    "coffee-script": "~1.4.0",
+    "connect-assets": "~2.3.3"
   }
 }

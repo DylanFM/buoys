@@ -7,6 +7,7 @@ app = module.exports = express()
 app.configure ->
   app.set 'views', "#{__dirname}/views"
   app.set 'view engine', 'jade'
+  app.use require('connect-assets')()
 
 # App routes
 
