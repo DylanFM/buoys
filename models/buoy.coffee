@@ -1,4 +1,5 @@
 redis = require 'redis'
+moment = require 'moment'
 
 class Buoy
 
@@ -22,6 +23,9 @@ class Buoy
         client.quit()
         buoy = response[0] # 1st member should be the buoy data
         buoy.latest = response[1] # 2nd member is the latest reading
+        # Doing on the server...
+        buoy.latest.updated_ago = moment.unix(parseInt(buoy.latest.created_at, 10)).fromNow()
+        # All done...
         done err, buoy
 
 
