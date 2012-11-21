@@ -1,15 +1,18 @@
-a(href="/", title="Go back to the buoys list") Back
-h1 {{buoy.name}}
-a(href="{{buoy.url}}", title="Visit the live graph") [source]
-dl
-  dt Direction
-  dd {{buoy.latest.direction}}º true north
-  dt Hmax
-  dd {{buoy.latest.hmax}}m
-  dt Hsig
-  dd {{buoy.latest.hsig}}m
-  dt Tsig
-  dd {{buoy.latest.tsig}} seconds
-  dt Tp1
-  dd {{buoy.latest.tp1}} seconds
-i Updated {{buoy.latest.updated_ago}}
+nav
+  a(href="/", title="Go back to the buoys list") Back
+
+article.buoy
+  h1 {{buoy.name}}
+  dl
+    dt Direction
+    dd {{buoy.latest.direction}}º true north
+    dt Hmax
+    dd {{buoy.latest.hmax}}m
+    dt Hsig
+    dd {{buoy.latest.hsig}}m
+    dt Tsig
+    dd {{buoy.latest.tsig}} seconds
+    dt Tp1
+    dd {{buoy.latest.tp1}} seconds
+  i Updated {{buoy.latest.updated_ago}}
+  a.source(href="{{buoy.url}}", title="Visit the live graph") Source
