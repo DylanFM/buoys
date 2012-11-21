@@ -1,5 +1,6 @@
 assets/*
 test/*
+views/*
 db/*
 public/*
 .DS_Store
