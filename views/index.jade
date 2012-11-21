@@ -3,6 +3,8 @@ extends layout
 block body
   div(ng-view)
 
+  != js('lib/zepto.min')
+  != js('lib/fastclick')
   != js('lib/angular/angular')
   != js('app')
   != js('controllers')

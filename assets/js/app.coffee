@@ -7,3 +7,8 @@ angular.module('buoysApp', [])
       .otherwise(redirectTo: '/')
 
     $locationProvider.html5Mode true
+
+
+# Onload
+$ ->
+  new FastClick document.body
