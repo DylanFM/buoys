@@ -3,12 +3,18 @@ nav
 
 article.buoy
   h1 {{buoy.name}}
-  span.direction(data-direction="{{buoy.latest.direction}}") {{buoy.latest.directionString}}
-  .size
-    span.hsig {{buoy.latest.hsig}}m
-    span.hmax {{buoy.latest.hmax}}m
-  .period
-    span.tsig {{buoy.latest.tsig}}sec
-    span.tp1 {{buoy.latest.tp1}}sec
-  i Updated {{buoy.latest.updated_ago}}
-  a.source(href="{{buoy.url}}", title="Visit the live graph") Source
+
+  .report
+    span.direction(data-direction="{{buoy.latest.direction}}") {{buoy.latest.directionString}}
+    .size
+      span.hsig {{buoy.latest.hsig}}m
+      span.hmax
+        {{buoy.latest.hmax}}m
+        span.max max
+    .period
+      span.tsig {{buoy.latest.tsig}}sec
+      span.tp1 
+        {{buoy.latest.tp1}}sec
+        span.max max
+
+  a.updated(href="{{buoy.url}}", title="Visit the live graph") Updated {{buoy.latest.updated_ago}}
