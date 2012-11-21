@@ -28,7 +28,7 @@ a:active, a:hover, a:focus {
   -webkit-box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
   -moz-box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
   box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
-  margin: 5px;
+  margin: 15px 5px;
   border-radius: 2px;
   background-color: #fff8e3;
   border: 1px solid rgba(0, 31, 125, 0.1);

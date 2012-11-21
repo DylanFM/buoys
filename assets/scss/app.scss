@@ -27,7 +27,7 @@ a {
 
 .buoy, .buoys {
   @include box-shadow(rgba($darkComplement, .15) 0 0 5px);
-  margin: 5px;
+  margin: 15px 5px;
   border-radius: 2px;
   background-color: saturate($yellow, 20);
   border: 1px solid rgba($darkComplement, .1);
