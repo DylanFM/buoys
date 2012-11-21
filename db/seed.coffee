@@ -6,47 +6,55 @@ client = redis.createClient()
 # Buoy data
 buoys = [
   {
-    slug: 'sydney'
-    name: 'Sydney'
-    url: 'http://mhl.nsw.gov.au/data/syddir.gif'
-  }
-  {
     slug: 'byron-bay'
     name: 'Byron Bay'
     url: 'http://mhl.nsw.gov.au/data/byron.gif'
+    pos: '1'
   }
   {
     slug: 'coffs-harbour'
     name: 'Coffs Harbour'
     url: 'http://mhl.nsw.gov.au/data/coffs.gif'
-  }
-  {
-    slug: 'port-kembla'
-    name: 'Port Kembla'
-    url: 'http://mhl.nsw.gov.au/data/portko.gif'
-  }
-  {
-    slug: 'batemans-bay'
-    name: 'Batemans Bay'
-    url: 'http://mhl.nsw.gov.au/data/batman.gif'
-  }
-  {
-    slug: 'eden'
-    name: 'Eden'
-    url: 'http://mhl.nsw.gov.au/data/edeno.gif'
+    pos: '2'
   }
   # {
   #   slug: 'crowdy-head'
   #   name: 'Crowdy Head'
   #   url: 'http://mhl.nsw.gov.au/data/crowdy.gif'
+  #   pos: '3'
   # }
+  {
+    slug: 'sydney'
+    name: 'Sydney'
+    url: 'http://mhl.nsw.gov.au/data/syddir.gif'
+    pos: '4'
+  }
+  {
+    slug: 'port-kembla'
+    name: 'Port Kembla'
+    url: 'http://mhl.nsw.gov.au/data/portko.gif'
+    pos: '5'
+  }
+  {
+    slug: 'batemans-bay'
+    name: 'Batemans Bay'
+    url: 'http://mhl.nsw.gov.au/data/batman.gif'
+    pos: '6'
+  }
+  {
+    slug: 'eden'
+    name: 'Eden'
+    url: 'http://mhl.nsw.gov.au/data/edeno.gif'
+    pos: '7'
+  }
 ]
 
 
 # Seed redis with the buoys we are tracking
 for buoy in buoys
-  # Set of buoy slugs
-  client.sadd 'buoys', buoy.slug
+  pos = parseInt buoy.pos, 10
+  # Sorted set of buoy slugs
+  client.zadd 'buoys', pos, buoy.slug # Ordered from north to south
   # Hash for each buoy
   client.hmset "buoys:#{buoy.slug}", buoy
 
@@ -54,7 +62,7 @@ for buoy in buoys
 # Output current state of the datastore
 multi = client.multi()
 
-multi.smembers 'buoys', (err, members) ->
+multi.zrange 'buoys', 0, -1, (err, members) ->
   console.log '"buoys" set to', members
 
 multi.keys 'buoys:*', (err, res) ->

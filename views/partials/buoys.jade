@@ -1,4 +1,3 @@
-h1 Buoys
-ul
-  li(ng-repeat="buoy in buoys | orderBy:'name'")
+ul.buoys
+  li(ng-repeat="buoy in buoys")
     a(href="/{{buoy.slug}}", title="View the {{buoy.name}} buoy") {{buoy.name}}
