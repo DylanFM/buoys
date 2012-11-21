@@ -1,0 +1,10 @@
+assets/*
+test/*
+db/*
+public/*
+.DS_Store
+.gitignore
+README.*
+grunt.js
+worker.coffee
+*.sw?
