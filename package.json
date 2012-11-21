@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "An alternative view for MHL buoys.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha test/*/*.coffee -R spec --compilers coffee:coffee-script"
   },
   "repository": {
     "type": "git",
@@ -30,6 +30,8 @@
     "underscore": "~1.4.2"
   },
   "devDependencies": {
-    "grunt-compass": "~0.3.7"
+    "grunt-compass": "~0.3.7",
+    "mocha": "~1.7.0",
+    "chai": "~1.3.0"
   }
 }
