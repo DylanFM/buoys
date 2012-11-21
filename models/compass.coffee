@@ -23,7 +23,6 @@ class Compass
   ]
 
   @directionFromDegrees: (deg) ->
-    deg = parseInt deg, 10
     # Everything but the first, as it's handled differently
     match = _.find @directions[1..-1], (dir) -> deg >= dir[1] && deg < dir[2]
     if match then match[0] else 'N'

@@ -1,5 +1,6 @@
 redis = require 'redis'
 moment = require 'moment'
+Compass = require './compass'
 
 class Buoy
 
@@ -25,6 +26,7 @@ class Buoy
         buoy.latest = response[1] # 2nd member is the latest reading
         # Doing on the server...
         buoy.latest.updated_ago = moment.unix(parseInt(buoy.latest.created_at, 10)).fromNow()
+        buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
         # All done...
         done err, buoy
 
