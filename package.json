@@ -28,5 +28,8 @@
     "mhl-buoy-data": "0.0.2",
     "moment": "~1.7.2",
     "underscore": "~1.4.2"
+  },
+  "devDependencies": {
+    "grunt-compass": "~0.3.7"
   }
 }
