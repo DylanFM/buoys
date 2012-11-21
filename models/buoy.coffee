@@ -7,7 +7,6 @@ class Buoy
     client = redis.createClient()
     # Get all buoys we're tracking
     client.zrange 'buoys', 0, -1, (err, slugs) ->
-      console.log slugs
       # Get each buoy's info
       multi = client.multi()
       multi.hgetall "buoys:#{slug}" for slug in slugs

@@ -1,4 +1,65 @@
+@import 'compass/css3';
+
+$link: "&:link, &:visited";
+$focus: "&:active, &:hover, &:focus";
+
+$yellow: #fff8e3;
+$darkComplement: darken(complement($yellow), 70);
+
+body {
+  background-color: lighten($yellow, 4);
+  font-size: 15px;
+  line-height: 1.4;
+  color: desaturate(darken($yellow, 75), 60);
+}
+
+a {
+  #{$link} {
+    color: desaturate(darken($yellow, 70), 30);
+  }
+  #{$focus} {
+    color: darken($yellow, 85);
+  }
+}
+
 ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
+  margin: 5px;
+  border-radius: 2px;
+  background-color: saturate($yellow, 20);
+  @include box-shadow(rgba($darkComplement, .15) 0 0 5px);
+  border: 1px solid rgba($darkComplement, .1);
+
+  li {
+    border-top: 1px solid rgba(lighten($yellow, 10), .4);
+    border-bottom: 1px solid rgba($darkComplement, .1);
+
+    &:first-child {
+      //border-top: none;
+
+      a {
+        top-border-radius: 1px;
+      }
+    }
+    &:last-child {
+      border-bottom: none;
+
+      a {
+        bottom-border-bottom: 1px;
+      }
+    }
+  }
+  a {
+    display: block;
+    padding: .8em 1em;
+    text-decoration: none;
+
+    #{$link} {
+      @include background-image(linear-gradient(rgba(lighten($yellow, 10), .05) 40%, transparent));
+    }
+    #{$focus} {
+      background-color: rgba(lighten($yellow, 10), .5);
+    }
+  }
 }

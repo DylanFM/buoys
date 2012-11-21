@@ -1,5 +1,64 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\000039}}
+body {
+  background-color: #fffdf7;
+  font-size: 15px;
+  line-height: 1.4;
+  color: #463c1e;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000317}}
+a:link, a:visited {
+  color: #6a5413;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000320}}
+a:active, a:hover, a:focus {
+  color: #302400;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000325}}
 ul {
   list-style: none;
-  padding: 0;
+  padding-left: 0;
+  margin: 5px;
+  border-radius: 2px;
+  background-color: #fff8e3;
+  -webkit-box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
+  -moz-box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
+  box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
+  border: 1px solid rgba(0, 31, 125, 0.1);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000334}}
+ul li {
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(0, 31, 125, 0.1);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000341}}
+ul li:first-child a {
+  top-border-radius: 1px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000345}}
+ul li:last-child {
+  border-bottom: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000348}}
+ul li:last-child a {
+  bottom-border-bottom: 1px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000353}}
+ul a {
+  display: block;
+  padding: .8em 1em;
+  text-decoration: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000358}}
+ul a:link, ul a:visited {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, rgba(255, 255, 255, 0.05)), color-stop(100%, transparent));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.05) 40%, transparent);
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.05) 40%, transparent);
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.05) 40%, transparent);
+  background-image: linear-gradient(rgba(255, 255, 255, 0.05) 40%, transparent);
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000361}}
+ul a:active, ul a:hover, ul a:focus {
+  background-color: rgba(255, 255, 255, 0.5);
 }
