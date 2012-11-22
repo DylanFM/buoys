@@ -29,5 +29,5 @@ app.get '*', routes.index
 
 # Start server
 
-app.listen 3000, ->
+app.listen config.get('PORT'), ->
   console.log "Express server listening on port #{@address().port}"

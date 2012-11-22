@@ -9,6 +9,7 @@ nconf
 
 nconf.defaults
   'NODE_ENV': 'development'
+  'PORT': 3000
 
 if redisUrl = url.parse nconf.get('OPENREDIS_URL')
   nconf.set 'REDIS_PORT', redisUrl.port
