@@ -8,15 +8,18 @@ _             = require 'underscore'
 Buoy.all (err, buoys) ->
   # Loop through each buoy
   for buoy in buoys
-    do (buoy) ->
-      console.log "#{buoy.name} - fetching graph from #{buoy.url}"
 
-      # Make note of the time
-      now = moment()
+    # Make note of the time
+    now = moment()
+
+    do (buoy, now) ->
+      console.log "#{buoy.name} - fetching graph from #{buoy.url}"
 
       try
         # Parse the buoy's graph
-        parseMHLGraph buoy.url, (conditions) ->
+        parseMHLGraph buoy.url, (err, conditions) ->
+
+          throw new Error(err) if err
 
           console.log "#{buoy.name} - graph parsed, storing in redis", conditions
 
