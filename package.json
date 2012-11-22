@@ -27,7 +27,8 @@
     "connect-assets": "~2.3.3",
     "mhl-buoy-data": "0.0.3",
     "moment": "~1.7.2",
-    "underscore": "~1.4.2"
+    "underscore": "~1.4.2",
+    "nconf": "~0.6.5"
   },
   "devDependencies": {
     "grunt-compass": "~0.3.7",

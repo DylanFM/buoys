@@ -1,7 +1,8 @@
-redis = require 'redis'
+config = require '../config'
+redis  = require 'redis'
 
-client = redis.createClient()
-
+client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
+client.auth(config.get('REDIS_AUTH')) if config.get('NODE_ENV') is 'production'
 
 # Buoy data
 buoys = [

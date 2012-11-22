@@ -1,3 +1,4 @@
+config = require './config/'
 express = require 'express'
 routes = require './routes'
 apiRoutes = require './routes/api'
@@ -8,6 +9,13 @@ app.configure ->
   app.set 'views', "#{__dirname}/views"
   app.set 'view engine', 'jade'
   app.use require('connect-assets')()
+  app.use app.router
+
+app.configure 'development', ->
+  app.use express.errorHandler dumpExceptions: true, showStack: true
+
+app.configure 'production', ->
+  app.use express.errorHandler()
 
 # Routes
 app.get '/', routes.index

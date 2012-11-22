@@ -1,0 +1,3 @@
+{
+  "OPENREDIS_URL": "redis://:password@host:port"
+}

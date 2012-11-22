@@ -1,3 +1,4 @@
+config        = require './config'
 Buoy          = require './models/buoy'
 redis         = require 'redis'
 moment        = require 'moment'
@@ -29,7 +30,8 @@ Buoy.all (err, buoys) ->
           # Going to cast values of object
           conditions[item[0]] = '' + item[1] for item in _.pairs(conditions)
 
-          client = redis.createClient()
+          client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
+          client.auth(config.get('REDIS_AUTH')) if config.get('NODE_ENV') is 'production'
 
           # Store the graph's data and timestamp in
           #  - buoys:slug:latest
