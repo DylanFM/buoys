@@ -1,12 +1,15 @@
 angular.module('buoysApp', [])
-  .config ($routeProvider, $locationProvider) ->
+  .config [
+    '$routeProvider', '$locationProvider'
+    ($routeProvider, $locationProvider) ->
 
-    $routeProvider
-      .when('/', controller: BuoysCtrl, templateUrl: 'partials/buoys')
-      .when('/:slug', controller: BuoyCtrl, templateUrl: 'partials/buoy')
-      .otherwise(redirectTo: '/')
+      $routeProvider
+        .when('/', controller: BuoysCtrl, templateUrl: 'partials/buoys')
+        .when('/:slug', controller: BuoyCtrl, templateUrl: 'partials/buoy')
+        .otherwise(redirectTo: '/')
 
-    $locationProvider.html5Mode true
+      $locationProvider.html5Mode true
+  ]
 
 
 # Onload
