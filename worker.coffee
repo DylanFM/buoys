@@ -5,6 +5,10 @@ moment        = require 'moment'
 parseMHLGraph = require 'mhl-buoy-data'
 _             = require 'underscore'
 
+if config.get('NODE_ENV') is 'production'
+  bugsnag = require 'bugsnag'
+  bugsnag.register(config.get('BUGSNAG_API_KEY')) 
+
 # Get all buoys
 Buoy.all (err, buoys) ->
   # Loop through each buoy
@@ -42,3 +46,4 @@ Buoy.all (err, buoys) ->
           client.quit()
       catch error
         console.log "#{buoy.name} - error", error
+        bugsnag.notify new Error(error) if bugsnag

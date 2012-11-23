@@ -1,3 +1,4 @@
 {
-  "OPENREDIS_URL": "redis://:password@host:port"
+  "OPENREDIS_URL": "redis://:password@host:port",
+  "BUGSNAG_API_KEY": "topsecret"
 }

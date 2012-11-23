@@ -1,7 +1,8 @@
-config = require './config/'
-express = require 'express'
-routes = require './routes'
+config    = require './config/'
+express   = require 'express'
+routes    = require './routes'
 apiRoutes = require './routes/api'
+bugsnag   = require 'bugsnag'
 
 app = module.exports = express()
 
@@ -16,6 +17,7 @@ app.configure 'development', ->
 
 app.configure 'production', ->
   app.use express.errorHandler()
+  app.use bugsnag.register(config.get('BUGSNAG_API_KEY'))
 
 # Routes
 app.get '/', routes.index
