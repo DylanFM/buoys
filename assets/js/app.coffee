@@ -1,4 +1,4 @@
-angular.module('buoysApp', [])
+angular.module('buoysApp', ['gauges'])
   .config [
     '$routeProvider', '$locationProvider'
     ($routeProvider, $locationProvider) ->
