@@ -1,5 +1,5 @@
 nav
-  a(href="/", title="Go back to the buoys list") Back
+  a(ng-href="/", title="Go back to the buoys list") Back
 
 article.buoy
   h1 {{buoy.name}}
@@ -17,4 +17,7 @@ article.buoy
         {{buoy.latest.tp1}}sec
         span.max max
 
-  a.updated(href="{{buoy.url}}", title="Visit the live graph") Updated {{buoy.latest.updated_ago}}
+  footer
+    a.refresh(href="", ng-click="refresh($event)", title="Check for new conditions") Refresh
+
+    a.updated(href="{{buoy.url}}", title="Visit the live graph") Updated {{buoy.latest.updated_ago}}

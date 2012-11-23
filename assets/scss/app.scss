@@ -114,12 +114,17 @@ a {
     }
   }
 
-  .updated {
-    display: block;
+  footer {
     margin-top: 2em;
     font-size: 13px;
     color: desaturate(darken($yellow, 50), 70);
+
+    .updated {
+      margin-left: 5px;
+      font-style: italic;
+    }
   }
+
 }
 
 nav {

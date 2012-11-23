@@ -4,8 +4,7 @@ controllerModule = angular.module 'buoysApp.controllers', ['buoysApp.services', 
 # Display buoys index
 controllerModule.controller 'BuoysCtrl', [
   '$scope', 'Buoy', 'gauges'
-  ($scope, Buoy) ->
-    Buoy.query (buoys) -> $scope.buoys = buoys
+  ($scope, Buoy) -> $scope.buoys = Buoy.query()
 ]
 
 
@@ -13,5 +12,10 @@ controllerModule.controller 'BuoysCtrl', [
 controllerModule.controller 'BuoyCtrl', [
   '$scope', '$routeParams', 'Buoy', 'gauges'
   ($scope, $routeParams, Buoy) ->
-    Buoy.get slug: $routeParams.slug, (buoy) -> $scope.buoy = buoy
+    $scope.buoy = Buoy.get slug: $routeParams.slug
+
+    $scope.refresh = ($event) -> 
+      $event.preventDefault()
+      $event.stopPropagation()
+      Buoy.get slug: $scope.buoy.slug, (buoy) -> $scope.buoy = buoy
 ]

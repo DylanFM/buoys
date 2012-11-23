@@ -1,22 +1,28 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000310}}
 body {
   background-color: #fffdf7;
   color: #463c1e;
   padding-top: 15px;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000316}}
 a {
   text-decoration: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/\.rbenv\/versions\/1\.9\.3-p0\/lib\/ruby\/gems\/1\.9\.1\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_hover-link\.scss}line{font-family:\000034}}
 a:hover {
   text-decoration: underline;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000319}}
 a:link, a:visited {
   color: #6a5413;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000322}}
 a:active, a:hover, a:focus {
   color: #302400;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000327}}
 .buoy, .buoys {
   -webkit-box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
   -moz-box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
@@ -27,28 +33,35 @@ a:active, a:hover, a:focus {
   border: 1px solid rgba(0, 31, 125, 0.1);
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000335}}
 .buoys {
   list-style: none;
   padding-left: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000339}}
 .buoys li {
   border-top: 1px solid rgba(255, 255, 255, 0.4);
   border-bottom: 1px solid rgba(0, 31, 125, 0.1);
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000344}}
 .buoys li:first-child a {
   top-border-radius: 1px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000348}}
 .buoys li:last-child {
   border-bottom: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000351}}
 .buoys li:last-child a {
   bottom-border-bottom: 1px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000356}}
 .buoys a {
   display: block;
   padding: .8em 1em;
   text-decoration: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000361}}
 .buoys a:link, .buoys a:visited {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(40%, rgba(255, 255, 255, 0.05)), color-stop(100%, transparent));
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.05) 40%, transparent);
@@ -56,19 +69,24 @@ a:active, a:hover, a:focus {
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.05) 40%, transparent);
   background-image: linear-gradient(rgba(255, 255, 255, 0.05) 40%, transparent);
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000364}}
 .buoys a:active, .buoys a:hover, .buoys a:focus {
   background-color: rgba(255, 255, 255, 0.5);
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000370}}
 .buoy {
   padding: .8em 1em;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000373}}
 .buoy h1 {
   margin-top: 0;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000377}}
 .buoy .report {
   position: relative;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000380}}
 .buoy .direction {
   position: absolute;
   left: 0;
@@ -84,33 +102,44 @@ a:active, a:hover, a:focus {
   font-size: 24px;
   font-weight: bold;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000395}}
 .buoy .size {
   padding-top: 8px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\0000398}}
 .buoy .size, .buoy .period {
   margin-left: 80px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003101}}
 .buoy .hsig, .buoy .tsig {
   font-size: 24px;
   font-weight: bold;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003105}}
 .buoy .hmax, .buoy .tp1 {
   vertical-align: super;
   font-size: 13px;
   margin-left: 4px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003110}}
 .buoy .hmax .max, .buoy .tp1 .max {
   padding-left: 2px;
   text-transform: uppercase;
   color: #94834f;
 }
-.buoy .updated {
-  display: block;
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003117}}
+.buoy footer {
   margin-top: 2em;
   font-size: 13px;
   color: #94834f;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003122}}
+.buoy footer .updated {
+  margin-left: 5px;
+  font-style: italic;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003130}}
 nav {
   margin: .5em 1em;
 }
