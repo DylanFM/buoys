@@ -43,6 +43,7 @@ app.get '/partials/:name', routes.partials # Angular templates
 
 app.get '/api/buoys', apiRoutes.buoys
 app.get '/api/buoys/:slug', apiRoutes.buoy
+app.get '/api/buoys/:slug/history', apiRoutes.buoyHistory
 
 # Start server
 

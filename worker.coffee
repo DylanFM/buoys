@@ -35,13 +35,21 @@ Buoy.all (err, buoys) ->
           conditions[item[0]] = '' + item[1] for item in _.pairs(conditions)
 
           client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
-          client.auth(config.get('REDIS_AUTH')) if config.get('NODE_ENV') is 'production'
+          client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
+
+          key = "buoys:#{buoy.slug}:#{now.year()}:#{now.month()}:#{now.date()}:#{now.hours()}:#{now.minutes()}"
 
           # Store the graph's data and timestamp in
           #  - buoys:slug:latest
           client.hmset "buoys:#{buoy.slug}:latest", conditions
           #  - buoys:slug:yyyy:mm:dd:hh::mm
-          client.hmset "buoys:#{buoy.slug}:#{now.year()}:#{now.month()}:#{now.date()}:#{now.hours()}:#{now.minutes()}", conditions
+          client.hmset key, conditions
+
+          # Store key in buoys:slug:recent list
+          recentKey = "buoys:#{buoy.slug}:recent"
+          client.lpush recentKey, key
+          # Ensure recent list only has up to 50 items
+          client.rpop recentKey if client.llen(recentKey) > 50
 
           client.quit()
       catch error

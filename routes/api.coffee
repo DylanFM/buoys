@@ -7,3 +7,7 @@ exports.buoys = (req, res) ->
 # Render requested buoy as JSON
 exports.buoy = (req, res) ->
   Buoy.findBySlug req.params.slug, (err, buoy) -> res.json(buoy)
+
+# Used to fetch recent history of a buoy
+exports.buoyHistory = (req, res) ->
+  Buoy.history req.params.slug, req.params.amount, (err, history) -> res.json(history)

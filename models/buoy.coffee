@@ -9,7 +9,7 @@ class Buoy
   @all: (done) ->
 
     client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
-    client.auth(config.get('REDIS_AUTH')) if config.get('NODE_ENV') is 'production'
+    client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
 
     # Get all buoys we're tracking
     client.zrange 'buoys', 0, -1, (err, slugs) ->
@@ -42,7 +42,8 @@ class Buoy
           buoys = _.reduce(_.zip(buoys, response), latestToBuoy, [])
           # Duplicate... this stuff needs love here!
           buoys = _.map buoys, (buoy) ->
-            buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
+            if buoy.latest and buoy.latest.direction
+              buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
             buoy
           # Now return
           done err, buoys
@@ -51,7 +52,7 @@ class Buoy
   @findBySlug: (slug, done) ->
 
     client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
-    client.auth(config.get('REDIS_AUTH')) if config.get('NODE_ENV') is 'production'
+    client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
 
     client.multi()
       .hgetall("buoys:#{slug}")
@@ -65,6 +66,28 @@ class Buoy
         buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
         # All done...
         done err, buoy
+
+
+  # Fetch n number of items from a buoy's recent history
+  @history: (slug, amount=20, done) ->
+
+    unless amount <= 50
+      done new Error('Cannot request more than 50 items from history')
+
+    client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
+    client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
+
+    client.lrange "buoys:#{slug}:recent", 0, amount, (err, keys) ->
+      # We have keys for the ones we're after
+      multi = client.multi()
+      multi.hgetall key for key in keys
+      # Execute query to fetch all history keys
+      multi.exec (err, history) ->
+        client.quit()
+        if err
+          done err
+        else
+          done err, history
 
 
 module.exports = Buoy
