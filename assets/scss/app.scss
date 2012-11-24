@@ -65,6 +65,11 @@ a {
       background-color: rgba(lighten($yellow, 10), .5);
     }
   }
+  .latest {
+    padding-left: 8px;
+    color: desaturate(darken($yellow, 50), 70);
+    font-size: 14px;
+  }
 }
 
 .buoy {

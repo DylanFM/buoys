@@ -2,6 +2,7 @@ config  = require '../config'
 redis   = require 'redis'
 moment  = require 'moment'
 Compass = require './compass'
+_       = require 'underscore'
 
 class Buoy
 
@@ -12,12 +13,40 @@ class Buoy
 
     # Get all buoys we're tracking
     client.zrange 'buoys', 0, -1, (err, slugs) ->
+      buoys = null
+
       # Get each buoy's info
       multi = client.multi()
       multi.hgetall "buoys:#{slug}" for slug in slugs
       multi.exec (err, response) ->
+        if err
+          done err
+        else
+          buoys = response
+
+      # Used later on for combining data sets
+      latestToBuoy = (resp, bc) -> 
+        bc[0].latest = bc[1]
+        resp.push bc[0]
+        resp
+
+      # Get their latest conditions
+      multi = client.multi()
+      multi.hgetall "buoys:#{slug}:latest" for slug in slugs
+      multi.exec (err, response) ->
         client.quit()
-        done err, response
+        if err
+          done err
+        else
+          # Combine the data sets
+          buoys = _.reduce(_.zip(buoys, response), latestToBuoy, [])
+          # Duplicate... this stuff needs love here!
+          buoys = _.map buoys, (buoy) ->
+            buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
+            buoy
+          # Now return
+          done err, buoys
+
 
   @findBySlug: (slug, done) ->
 
