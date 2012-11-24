@@ -2,6 +2,12 @@ body {
   background-color: #fffdf7;
   color: #463c1e;
   padding-top: 15px;
+  font-family: "proxima-nova-soft", sans-serif;
+  font-weight: 400;
+}
+
+h1, h2, b {
+  font-weight: 600;
 }
 
 a {
@@ -87,7 +93,7 @@ a:active, a:hover, a:focus {
   color: #fff8e3;
   text-align: center;
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
 }
 .buoy .size {
   padding-top: 8px;
@@ -97,7 +103,7 @@ a:active, a:hover, a:focus {
 }
 .buoy .hsig, .buoy .tsig {
   font-size: 24px;
-  font-weight: bold;
+  font-weight: 600;
 }
 .buoy .hmax, .buoy .tp1 {
   vertical-align: super;
