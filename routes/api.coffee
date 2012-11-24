@@ -10,4 +10,4 @@ exports.buoy = (req, res) ->
 
 # Used to fetch recent history of a buoy
 exports.buoyHistory = (req, res) ->
-  Buoy.history req.params.slug, req.params.amount, (err, history) -> res.json(history)
+  Buoy.history req.params.slug, req.query.amount, (err, history) -> res.json(history)

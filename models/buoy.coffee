@@ -71,7 +71,10 @@ class Buoy
   # Fetch n number of items from a buoy's recent history
   @history: (slug, amount=20, done) ->
 
-    unless amount <= 50
+    # To work with lrange, we have 0 based indexes
+    amount--
+
+    unless amount < 50
       done new Error('Cannot request more than 50 items from history')
 
     client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
