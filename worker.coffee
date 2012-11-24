@@ -49,7 +49,7 @@ Buoy.all (err, buoys) ->
           recentKey = "buoys:#{buoy.slug}:recent"
           client.lpush recentKey, key
           # Ensure recent list only has up to 50 items
-          client.rpop recentKey if client.llen(recentKey) > 50
+          client.ltrim recentKey, 0, 50
 
           client.quit()
       catch error
