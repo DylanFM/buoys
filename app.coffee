@@ -38,6 +38,7 @@ app.configure 'production', ->
 
 # Routes
 app.get '/', routes.index
+app.get '/:slug', routes.index
 
 app.get '/partials/:name', routes.partials # Angular templates
 
