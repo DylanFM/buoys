@@ -60,12 +60,15 @@ class Buoy
       .exec (err, response) ->
         client.quit()
         buoy = response[0] # 1st member should be the buoy data
-        buoy.latest = response[1] # 2nd member is the latest reading
-        # Doing on the server...
-        buoy.latest.updated_ago = moment.unix(parseInt(buoy.latest.created_at, 10)).fromNow()
-        buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
-        # All done...
-        done err, buoy
+        if buoy
+          buoy.latest = response[1] # 2nd member is the latest reading
+          # Doing on the server...
+          buoy.latest.updated_ago = moment.unix(parseInt(buoy.latest.created_at, 10)).fromNow()
+          buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
+          # All done...
+          done err, buoy
+        else
+          done new Error('Buoy not found')
 
 
   # Fetch n number of items from a buoy's recent history
@@ -87,10 +90,7 @@ class Buoy
       # Execute query to fetch all history keys
       multi.exec (err, history) ->
         client.quit()
-        if err
-          done err
-        else
-          done err, history
+        done err, history
 
 
 module.exports = Buoy

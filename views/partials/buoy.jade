@@ -16,6 +16,7 @@ article.buoy
       span.tp1 
         {{buoy.latest.tp1}}sec
         span.max max
+    div(history-graph="true", amount="12")
 
   footer
     a.refresh(href="", ng-click="refresh($event)", title="Check for new conditions") Refresh

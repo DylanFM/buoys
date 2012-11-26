@@ -1,15 +1,15 @@
-controllerModule = angular.module 'buoysApp.controllers', ['buoysApp.services', 'buoysApp.resources']
+controllers = angular.module 'buoysApp.controllers', ['buoysApp.services', 'buoysApp.resources', 'buoysApp.directives']
 
 
 # Display buoys index
-controllerModule.controller 'BuoysCtrl', [
+controllers.controller 'BuoysCtrl', [
   '$scope', 'Buoy', 'gauges'
   ($scope, Buoy) -> $scope.buoys = Buoy.query()
 ]
 
 
 # Display a buoy's page
-controllerModule.controller 'BuoyCtrl', [
+controllers.controller 'BuoyCtrl', [
   '$scope', '$routeParams', 'Buoy', 'gauges'
   ($scope, $routeParams, Buoy) ->
     $scope.buoy = Buoy.get slug: $routeParams.slug
