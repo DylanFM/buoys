@@ -89,8 +89,24 @@ class Buoy
       multi.hgetall key for key in keys
       # Execute query to fetch all history keys
       multi.exec (err, history) ->
+        # Done with redis
         client.quit()
-        done err, history
+
+        if err
+          done err
+          return
+
+        # History is an array of conditions, time ordered
+        # Along with this we should return arrays for the past hsig, tsig and dir.
+        # Thinking of this is that we can cache here and do it once per hour,
+        # saving pushing it to the client and having them do it each request.
+        
+        directions = _.map history, (c) -> c.direction
+        hsig       = _.map history, (c) -> c.hsig
+        tsig       = _.map history, (c) -> c.tsig
+
+        # Return
+        done null, { directions, hsig, tsig, history }
 
 
 module.exports = Buoy
