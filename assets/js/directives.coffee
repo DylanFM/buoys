@@ -22,8 +22,8 @@ directives.directive 'historyGraph', [
                 max    = $(cont).data('max') or d3.max data
                 width  = parseInt $(cont).css('width'), 10
                 height = parseInt $(cont).css('height'), 10
-                xScale = d3.scale.linear().domain([0, data.length-1]).range [0, width]
-                yScale = d3.scale.linear().domain([min, max]).range [0, height]
+                xScale = d3.scale.linear().domain([0, data.length-1]).rangeRound [2, width-2]
+                yScale = d3.scale.linear().domain([min, max]).nice().rangeRound [2, height-2]
                 line   = d3.svg.line()
                 line.x (d, i) -> xScale(i)
                 line.y (d) -> yScale(d)

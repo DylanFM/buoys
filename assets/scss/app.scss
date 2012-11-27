@@ -82,11 +82,13 @@ a {
   padding: .8em 1em;
 
   h1 {
-    margin-top: 0;
+    margin: 0 0 18px 0;
   }
 
-  .report {
+  .latest {
     position: relative;
+    margin-bottom: 18px;
+    min-height: 72px;
   }
   .direction {
     position: absolute;
@@ -126,7 +128,8 @@ a {
   }
 
   footer {
-    margin-top: 2em;
+    border-top: 1px solid desaturate(darken($yellow, 10), 70);
+    padding-top: 18px;
     font-size: 13px;
     color: desaturate(darken($yellow, 50), 70);
 
@@ -139,10 +142,26 @@ a {
 }
 
 .history {
+  border-top: 1px solid desaturate(darken($yellow, 10), 70);
+  padding-top: 18px;
+  margin-bottom: 18px;
+
+  h3, h4 {
+    margin: 0;
+  }
+  h4 {
+    font-weight: 400;
+  }
   ul {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: .8em 0 0 0;
+  }
+  li {
+    margin-bottom: 10px;
+  }
+  li:last-child {
+    margin-bottom: 0;
   }
   h4 {
     display: inline-block;
@@ -150,17 +169,20 @@ a {
   }
 }
 .graph {
-  width: 180px;
-  height: 20px;
+  width: 100px;
+  height: 15px;
   display: inline-block;
   position: relative;
-  top: 10px;
+  top: 5px;
 
   // SVG
   path {
-    stroke: desaturate(darken($yellow, 75), 60);
+    stroke: desaturate(darken($yellow, 50), 70);
     stroke-width: 2px;
     fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    //shape-rendering: crispEdges;
   }
 }
 
