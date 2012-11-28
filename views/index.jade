@@ -1,7 +1,11 @@
 extends layout
 
 block body
-  div(ng-view)
+  header
+    h1 
+      a(ng-href="/", title="Go to the buoys list") Buoys
+
+  .view(ng-view)
 
   != js('crashmat')
   != js('typekit')

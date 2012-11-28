@@ -10,29 +10,12 @@ $darkComplement: darken(complement($yellow), 70);
 body {
   background: url('/images/wavecut_@2X.png') 0 0 repeat;
   color: desaturate(darken($yellow, 75), 60);
-  padding-top: 15px;
   font-family: "proxima-nova-soft", sans-serif;
   font-weight: 400;
 }
 
-@media
-only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (   min--moz-device-pixel-ratio: 2),
-only screen and (     -o-min-device-pixel-ratio: 2/1),
-only screen and (        min-device-pixel-ratio: 2),
-only screen and (                min-resolution: 192dpi),
-only screen and (                min-resolution: 2dppx) { 
-  // Retina background
-  body {
-    background-image: url('/images/wavecut_@2X.png');
-  }
-}
-
 h1, h2, b {
   font-weight: 600;
-}
-h1 {
-  color: #004b4d;
 }
 
 a {
@@ -46,12 +29,43 @@ a {
   }
 }
 
-.buoy, .buoys {
+header, .buoy, .buoys {
   @include box-shadow(rgba($darkComplement, .2) 0 0 5px);
+}
+
+header {
+  padding: 15px 0 .5em 0;
+  border-bottom: 1px solid rgba($darkComplement, .2);
+  background-color: transparentize($yellow, 0.35);
+  
+  h1 {
+    margin: 0;
+    font-size: 15px;
+    text-transform: uppercase;
+    text-align: center;
+
+    a {
+      #{$link} {
+      }
+      #{$focus} {
+        color: #009ea2;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+// NG View container
+.view {
+  margin-top: 12px;
+}
+
+.buoy, .buoys {
   margin: 5px;
   border-radius: 2px;
-  background-color: transparentize($yellow, 0.3);
   border: 1px solid rgba($darkComplement, .15);
+  border-bottom-color: rgba($darkComplement, .2);
+  background-color: transparentize($yellow, 0.3);
 }
 
 .buoys {
@@ -209,6 +223,15 @@ a {
   }
 }
 
-nav {
-  margin: .5em 1em;
+// Retina retina retina
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+  body {
+    background-image: url('/images/wavecut_@2X.png');
+  }
 }
