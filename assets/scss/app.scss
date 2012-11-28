@@ -147,8 +147,15 @@ a {
     border-top: 1px solid desaturate(darken($yellow, 10), 70);
     padding-top: 18px;
     font-size: 13px;
-    color: desaturate(darken($yellow, 50), 70);
 
+    a {
+      #{$link} {
+        color: #007d80;
+      }
+      #{$focus} {
+        color: #009ea2;
+      }
+    }
     .updated {
       margin-left: 5px;
       font-style: italic;
