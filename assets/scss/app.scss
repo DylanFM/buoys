@@ -31,6 +31,9 @@ only screen and (                min-resolution: 2dppx) {
 h1, h2, b {
   font-weight: 600;
 }
+h1 {
+  color: #004b4d;
+}
 
 a {
   @include hover-link;
@@ -44,11 +47,11 @@ a {
 }
 
 .buoy, .buoys {
-  @include box-shadow(rgba($darkComplement, .15) 0 0 5px);
+  @include box-shadow(rgba($darkComplement, .2) 0 0 5px);
   margin: 5px;
   border-radius: 2px;
   background-color: transparentize($yellow, 0.3);
-  border: 1px solid rgba($darkComplement, .1);
+  border: 1px solid rgba($darkComplement, .15);
 }
 
 .buoys {
@@ -106,10 +109,10 @@ a {
   .direction {
     position: absolute;
     left: 0;
-    top: 1px;
-    width: 70px;
+    top: 6px;
+    width: 60px;
     height: 30px;
-    padding: 21px 0 19px 0;
+    padding: 16px 0 14px 0;
     background: #007d80;
     border: 1px solid #004b4d;
     border-radius: 36px;
@@ -122,7 +125,7 @@ a {
     padding-top: 8px;
   }
   .size, .period {
-    margin-left: 80px;
+    margin-left: 74px;
   }
   .hsig, .tsig {
     font-size: 24px;
