@@ -1,11 +1,16 @@
 body {
-  background-color: #fffdf7;
-  color: #463c1e;
+  background: url("/images/wavecut_@2X.png") 0 0 repeat;
+  color: #524523;
   padding-top: 15px;
   font-family: "proxima-nova-soft", sans-serif;
   font-weight: 400;
 }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  body {
+    background-image: url("/images/wavecut_@2X.png");
+  }
+}
 h1, h2, b {
   font-weight: 600;
 }
@@ -17,20 +22,20 @@ a:hover {
   text-decoration: underline;
 }
 a:link, a:visited {
-  color: #6a5413;
+  color: #795e15;
 }
 a:active, a:hover, a:focus {
-  color: #302400;
+  color: #423000;
 }
 
 .buoy, .buoys {
-  -webkit-box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
-  -moz-box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
-  box-shadow: rgba(0, 31, 125, 0.15) 0 0 5px;
+  -webkit-box-shadow: rgba(0, 39, 142, 0.15) 0 0 5px;
+  -moz-box-shadow: rgba(0, 39, 142, 0.15) 0 0 5px;
+  box-shadow: rgba(0, 39, 142, 0.15) 0 0 5px;
   margin: 5px;
   border-radius: 2px;
-  background-color: #fff8e3;
-  border: 1px solid rgba(0, 31, 125, 0.1);
+  background-color: rgba(255, 252, 244, 0.7);
+  border: 1px solid rgba(0, 39, 142, 0.1);
 }
 
 .buoys {
@@ -39,7 +44,7 @@ a:active, a:hover, a:focus {
 }
 .buoys li {
   border-top: 1px solid rgba(255, 255, 255, 0.4);
-  border-bottom: 1px solid rgba(0, 31, 125, 0.1);
+  border-bottom: 1px solid rgba(0, 39, 142, 0.1);
 }
 .buoys li:first-child a {
   top-border-radius: 1px;
@@ -67,7 +72,7 @@ a:active, a:hover, a:focus {
 }
 .buoys .latest {
   padding-left: 8px;
-  color: #94834f;
+  color: #9f8b55;
   font-size: 14px;
 }
 
@@ -89,10 +94,10 @@ a:active, a:hover, a:focus {
   width: 70px;
   height: 30px;
   padding: 21px 0 19px 0;
-  background: #94834f;
-  border: 1px solid #7d5e00;
+  background: #007d80;
+  border: 1px solid #004b4d;
   border-radius: 36px;
-  color: #fff8e3;
+  color: #fffcf4;
   text-align: center;
   font-size: 24px;
   font-weight: 600;
@@ -115,13 +120,13 @@ a:active, a:hover, a:focus {
 .buoy .hmax .max, .buoy .tp1 .max {
   padding-left: 2px;
   text-transform: uppercase;
-  color: #94834f;
+  color: #009ea2;
 }
 .buoy footer {
-  border-top: 1px solid #e3ddcc;
+  border-top: 1px solid #e9e4d7;
   padding-top: 18px;
   font-size: 13px;
-  color: #94834f;
+  color: #9f8b55;
 }
 .buoy footer .updated {
   margin-left: 5px;
@@ -129,7 +134,7 @@ a:active, a:hover, a:focus {
 }
 
 .history {
-  border-top: 1px solid #e3ddcc;
+  border-top: 1px solid #e9e4d7;
   padding-top: 18px;
   margin-bottom: 18px;
 }
@@ -163,7 +168,7 @@ a:active, a:hover, a:focus {
   top: 5px;
 }
 .graph path {
-  stroke: #94834f;
+  stroke: #009ea2;
   stroke-width: 2px;
   fill: none;
   stroke-linejoin: round;

@@ -4,15 +4,28 @@
 $link: "&:link, &:visited";
 $focus: "&:active, &:hover, &:focus";
 
-$yellow: #fff8e3;
+$yellow: #fffcf4;
 $darkComplement: darken(complement($yellow), 70);
 
 body {
-  background-color: lighten($yellow, 4);
+  background: url('/images/wavecut_@2X.png') 0 0 repeat;
   color: desaturate(darken($yellow, 75), 60);
   padding-top: 15px;
   font-family: "proxima-nova-soft", sans-serif;
   font-weight: 400;
+}
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+  // Retina background
+  body {
+    background-image: url('/images/wavecut_@2X.png');
+  }
 }
 
 h1, h2, b {
@@ -34,7 +47,7 @@ a {
   @include box-shadow(rgba($darkComplement, .15) 0 0 5px);
   margin: 5px;
   border-radius: 2px;
-  background-color: saturate($yellow, 20);
+  background-color: transparentize($yellow, 0.3);
   border: 1px solid rgba($darkComplement, .1);
 }
 
@@ -97,8 +110,8 @@ a {
     width: 70px;
     height: 30px;
     padding: 21px 0 19px 0;
-    background: desaturate(darken($yellow, 50), 70);
-    border: 1px solid darken($yellow, 70);
+    background: #007d80;
+    border: 1px solid #004b4d;
     border-radius: 36px;
     color: saturate($yellow, 20);
     text-align: center;
@@ -123,7 +136,7 @@ a {
     .max {
       padding-left: 2px;
       text-transform: uppercase;
-      color: desaturate(darken($yellow, 50), 70);
+      color: #009ea2;
     }
   }
 
@@ -177,7 +190,7 @@ a {
 
   // SVG
   path {
-    stroke: desaturate(darken($yellow, 50), 70);
+    stroke: #009ea2;
     stroke-width: 2px;
     fill: none;
     stroke-linejoin: round;
