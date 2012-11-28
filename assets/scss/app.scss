@@ -61,7 +61,7 @@ header {
   margin-top: 12px;
 }
 
-.buoy, .buoys {
+.buoy, .buoys, .copy {
   margin: 5px;
   border-radius: 2px;
   border: 1px solid rgba($darkComplement, .15);
@@ -109,13 +109,15 @@ header {
   }
 }
 
-.buoy {
+.copy, .buoy {
   padding: .8em 1em;
 
   h1 {
     margin: 0 0 18px 0;
   }
+}
 
+.buoy {
   .latest {
     position: relative;
     margin-bottom: 18px;
@@ -220,6 +222,7 @@ footer {
   font-size: 13px;
   color: #009ea2;
   margin: 10px;
+  position: relative;
 
   a {
     #{$link} {
@@ -228,6 +231,12 @@ footer {
     #{$focus} {
       color: #009ea2;
     }
+  }
+  .about {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: bold;
   }
 }
 

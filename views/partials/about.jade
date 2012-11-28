@@ -1,0 +1,24 @@
+.copy
+  h1 About this app
+  p 
+    | Like many NSW&ndash;based surfers and ocean lovers, I've been using the 
+    a(href="http://new.mhl.nsw.gov.au/data/realtime/wave/", title="Manly Hydraulics Labratory") MHL's buoy data
+    |  for years. I recently lived in a region that didn't have data like this available and realised how important it was to me. MHL, thankyou for providing this data. However, I want a more user&ndash;friendly alternative to 
+    a(href="http://mhl.nsw.gov.au/data/syddir.gif", title="The Sydney buoy graph") your graphs
+    | .
+
+  p 
+    | Keen for the challenge and a bit foolish, I avoided contacting MHL for information on an API and wrote a little library for decoding and parsing their GIF graphs. This library is open source and 
+    a(href="http://github.com/DylanFM/mhl-buoy-data", title="MHL Buoy Data NPM module") available on Github
+    | . Once this was functional, I started work on the web app you're using now. Every hour a worker fetches the latest graphs for the MHL buoys, reads them and stores the conditions. This app is my take on a new interface for the MHL data. The code for this app is open source and 
+    a(href="http://github.com/DylanFM/buoys", title="Source code for this webapp") available on Github
+    |  too. At the moment this app is optimised for use on an iPhone. I recommend that you add it to your home&ndash;screen as a bookmark.
+
+  p 
+    |This app is an experiment, but one that I'll be using constantly to check surf conditions. I expect there to be bugs and for things to go wrong. I wouldn't rely on this data for anything important. If the MHL change their graph format there will be bugs until the app is updated. I should probably include a link to 
+    a(href="http://new.mhl.nsw.gov.au/Copyright", title="MHL's disclaimer and copyright notice") the MHL's copyright page
+    |  here too.
+
+  p Suggestions, nice things and constructive criticism welcome via email at dylan [at] surftourist.com.
+
+  p &mdash; Dylan Fogarty&ndash;MacDonald

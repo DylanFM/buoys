@@ -51,7 +51,7 @@ header h1 a:active, header h1 a:hover, header h1 a:focus {
   margin-top: 12px;
 }
 
-.buoy, .buoys {
+.buoy, .buoys, .copy {
   margin: 5px;
   border-radius: 2px;
   border: 1px solid rgba(0, 39, 142, 0.15);
@@ -97,12 +97,13 @@ header h1 a:active, header h1 a:hover, header h1 a:focus {
   font-size: 14px;
 }
 
-.buoy {
+.copy, .buoy {
   padding: .8em 1em;
 }
-.buoy h1 {
+.copy h1, .buoy h1 {
   margin: 0 0 18px 0;
 }
+
 .buoy .latest {
   position: relative;
   margin-bottom: 18px;
@@ -199,12 +200,19 @@ footer {
   font-size: 13px;
   color: #009ea2;
   margin: 10px;
+  position: relative;
 }
 footer a:link, footer a:visited {
   color: #007d80;
 }
 footer a:active, footer a:hover, footer a:focus {
   color: #009ea2;
+}
+footer .about {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: bold;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {

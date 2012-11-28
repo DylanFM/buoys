@@ -8,8 +8,10 @@ block body
   .view(ng-view)
 
   footer
-    | Data sourced from the 
-    a(ng-href="http://new.mhl.nsw.gov.au/data/realtime/wave/", tite="Manly Hydraulics Labratory") MHL
+    .source
+      | Data sourced from the 
+      a(ng-href="http://new.mhl.nsw.gov.au/data/realtime/wave/", tite="Manly Hydraulics Labratory") MHL
+    a.about(ng-href="/about", title="Read all about this app") About this app
 
   != js('crashmat')
   != js('typekit')

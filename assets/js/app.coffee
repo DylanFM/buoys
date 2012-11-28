@@ -6,6 +6,7 @@ app.config [
 
       $routeProvider
         .when('/',      controller: 'BuoysCtrl',  templateUrl: 'partials/buoys')
+        .when('/about', controller: 'AboutCtrl',  templateUrl: 'partials/about')
         .when('/:slug', controller: 'BuoyCtrl',   templateUrl: 'partials/buoy')
         .otherwise(redirectTo: '/')
 
