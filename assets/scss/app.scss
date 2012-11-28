@@ -34,7 +34,7 @@ header, .buoy, .buoys {
 }
 
 header {
-  padding: 15px 0 .5em 0;
+  padding: 12px 0 .5em 0;
   border-bottom: 1px solid rgba($darkComplement, .2);
   background-color: transparentize($yellow, 0.35);
   
@@ -46,9 +46,10 @@ header {
 
     a {
       #{$link} {
+        color: #009ea2;
       }
       #{$focus} {
-        color: #009ea2;
+        color: #007d80;
         text-decoration: none;
       }
     }
@@ -160,16 +161,8 @@ header {
   footer {
     border-top: 1px solid desaturate(darken($yellow, 10), 70);
     padding-top: 18px;
-    font-size: 13px;
+    margin: 0;
 
-    a {
-      #{$link} {
-        color: #007d80;
-      }
-      #{$focus} {
-        color: #009ea2;
-      }
-    }
     .updated {
       margin-left: 5px;
       font-style: italic;
@@ -220,6 +213,21 @@ header {
     stroke-linejoin: round;
     stroke-linecap: round;
     //shape-rendering: crispEdges;
+  }
+}
+
+footer {
+  font-size: 13px;
+  color: #009ea2;
+  margin: 10px;
+
+  a {
+    #{$link} {
+      color: #007d80;
+    }
+    #{$focus} {
+      color: #009ea2;
+    }
   }
 }
 

@@ -29,7 +29,7 @@ header, .buoy, .buoys {
 }
 
 header {
-  padding: 15px 0 .5em 0;
+  padding: 12px 0 .5em 0;
   border-bottom: 1px solid rgba(0, 39, 142, 0.2);
   background-color: rgba(255, 252, 244, 0.65);
 }
@@ -39,8 +39,11 @@ header h1 {
   text-transform: uppercase;
   text-align: center;
 }
-header h1 a:active, header h1 a:hover, header h1 a:focus {
+header h1 a:link, header h1 a:visited {
   color: #009ea2;
+}
+header h1 a:active, header h1 a:hover, header h1 a:focus {
+  color: #007d80;
   text-decoration: none;
 }
 
@@ -143,13 +146,7 @@ header h1 a:active, header h1 a:hover, header h1 a:focus {
 .buoy footer {
   border-top: 1px solid #e9e4d7;
   padding-top: 18px;
-  font-size: 13px;
-}
-.buoy footer a:link, .buoy footer a:visited {
-  color: #007d80;
-}
-.buoy footer a:active, .buoy footer a:hover, .buoy footer a:focus {
-  color: #009ea2;
+  margin: 0;
 }
 .buoy footer .updated {
   margin-left: 5px;
@@ -196,6 +193,18 @@ header h1 a:active, header h1 a:hover, header h1 a:focus {
   fill: none;
   stroke-linejoin: round;
   stroke-linecap: round;
+}
+
+footer {
+  font-size: 13px;
+  color: #009ea2;
+  margin: 10px;
+}
+footer a:link, footer a:visited {
+  color: #007d80;
+}
+footer a:active, footer a:hover, footer a:focus {
+  color: #009ea2;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
