@@ -65,6 +65,7 @@ header {
   margin: 5px;
   border-radius: 2px;
   border: 1px solid rgba($darkComplement, .15);
+  border-top-color: rgba($darkComplement, .1);
   border-bottom-color: rgba($darkComplement, .2);
   background-color: transparentize($yellow, 0.3);
 }

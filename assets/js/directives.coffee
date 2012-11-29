@@ -9,7 +9,7 @@ directives.directive 'historyGraph', [
         # Wait for slug to be changed/set
         scope.$watch 'buoy.slug', (slug) ->
           if slug
-            Buoy.history slug: slug, amount: scope.amount, (history) -> scope.history = history
+            Buoy.history(slug, scope.amount).then (history) -> scope.history = history
         # Watch for history changes
         scope.$watch 'history', (history) ->
           graphs = $(el[0]).find '.graph'
@@ -27,7 +27,6 @@ directives.directive 'historyGraph', [
                 line   = d3.svg.line()
                 line.x (d, i) -> xScale(i)
                 line.y (d) -> yScale(d)
-                console.log(data, line(data))
                 graph  = d3.select(cont).append('svg:svg').attr('width', '100%').attr('height', '100%')
                 graph.append('svg:path').attr('d', line(data))
     }
