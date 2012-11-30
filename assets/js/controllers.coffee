@@ -3,20 +3,23 @@ controllers = angular.module 'buoysApp.controllers', ['buoysApp.services', 'buoy
 
 # Display buoys index
 controllers.controller 'BuoysCtrl', [
-  '$scope', 'Buoy', 'gauges'
-  ($scope, Buoy) ->
+  '$rootScope', '$scope', 'Buoy', 'gauges'
+  ($rootScope, $scope, Buoy) ->
     Buoy.query().then (buoys) -> $scope.buoys = buoys
+
+    # Support refreshing
+    $rootScope.$on 'refresh', (e) ->
+      Buoy.query(true).then (buoys) -> $scope.buoys = buoys
 ]
 
 
 # Display a buoy's page
 controllers.controller 'BuoyCtrl', [
-  '$scope', '$routeParams', 'Buoy', 'gauges'
-  ($scope, $routeParams, Buoy) ->
+  '$rootScope', '$scope', '$routeParams', 'Buoy', 'gauges'
+  ($rootScope, $scope, $routeParams, Buoy) ->
     Buoy.get($routeParams.slug).then (buoy) -> $scope.buoy = buoy
 
-    $scope.refresh = ($event) -> 
-      $event.preventDefault()
-      $event.stopPropagation()
+    # Support refreshing
+    $rootScope.$on 'refresh', (e) ->
       Buoy.get($scope.buoy.slug, true).then (buoy) -> $scope.buoy = buoy
 ]

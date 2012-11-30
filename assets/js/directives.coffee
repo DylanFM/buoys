@@ -1,7 +1,21 @@
 directives = angular.module 'buoysApp.directives', []
 
+
+directives.directive 'refresh', [
+  '$rootScope'
+  ($rootScope) ->
+    (scope, el) ->
+      scope.refresh = ($event) ->
+        $event.preventDefault()
+        $event.stopPropagation()
+        # Publish a refresh event
+        $rootScope.$emit 'refresh'
+]
+
+
 directives.directive 'historyGraph', [
-  'Buoy', (Buoy) ->
+  '$rootScope', 'Buoy'
+  ($rootScope, Buoy) ->
     {
       templateUrl: '/partials/buoyHistory'
       link: (scope, el, attrs) ->
@@ -10,11 +24,17 @@ directives.directive 'historyGraph', [
         scope.$watch 'buoy.slug', (slug) ->
           if slug
             Buoy.history(slug, scope.amount).then (history) -> scope.history = history
+        # Support refreshing
+        $rootScope.$on 'refresh', (e) ->
+          Buoy.history(scope.buoy.slug, scope.amount, true).then (history) -> scope.history = history
         # Watch for history changes
         scope.$watch 'history', (history) ->
           graphs = $(el[0]).find '.graph'
           if graphs.length
             graphs.forEach (cont) ->
+              # Empty
+              d3.select(cont).selectAll('path').remove()
+              # Process
               history = $(cont).data 'history'
               if history.length
                 data   = $.map JSON.parse(history), (n,i) -> parseFloat(n, 10)

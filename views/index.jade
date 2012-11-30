@@ -4,6 +4,8 @@ block body
   header
     h1 
       a(ng-href="/", title="Go to the buoys list") Buoys
+    a.refresh(refresh="true", href="", ng-click="refresh($event)", title="Check for new conditions") Refresh
+
 
   .view(ng-view)
 
