@@ -16,8 +16,10 @@ resources.factory 'Buoy', [
             resp.data.map (b) -> new Buoy(b)
       
       @get: (slug, force=false) ->
-        $http.get("/api/buoys/#{slug}", cache: !force)
-          .then (resp) -> new Buoy(resp.data)
+        # To make use of caching throughout the app, call @query
+        @query(force).then (buoys) ->
+          # Select this buoy
+          _.find buoys, (b) -> b.slug is slug
 
       @history: (slug, amount, force=false) ->
         $http.get("/api/buoys/#{slug}/history", { amount, cache: !force })
