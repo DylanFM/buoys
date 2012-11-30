@@ -37,7 +37,8 @@ directives.directive 'historyGraph', [
               # Process
               history = $(cont).data 'history'
               if history.length
-                data   = $.map JSON.parse(history), (n,i) -> parseFloat(n, 10)
+                data   = $.map JSON.parse(history), (n,i) -> 
+                  if n then parseFloat(n, 10) else 0
                 min    = $(cont).data('min') or d3.min data
                 max    = $(cont).data('max') or d3.max data
                 width  = parseInt $(cont).css('width'), 10
