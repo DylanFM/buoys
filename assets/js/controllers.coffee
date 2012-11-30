@@ -18,5 +18,5 @@ controllers.controller 'BuoyCtrl', [
     $scope.refresh = ($event) -> 
       $event.preventDefault()
       $event.stopPropagation()
-      Buoy.get($scope.buoy.slug).then (buoy) -> $scope.buoy = buoy
+      Buoy.get($scope.buoy.slug, true).then (buoy) -> $scope.buoy = buoy
 ]

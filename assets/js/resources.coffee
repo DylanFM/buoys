@@ -10,17 +10,17 @@ resources.factory 'Buoy', [
       # Mimic ngResource for now
       #
 
-      @query: ->
-        $http.get('/api/buoys')
+      @query: (force=false) ->
+        $http.get('/api/buoys', cache: !force)
           .then (resp) ->
             resp.data.map (b) -> new Buoy(b)
       
-      @get: (slug) ->
-        $http.get("/api/buoys/#{slug}")
+      @get: (slug, force=false) ->
+        $http.get("/api/buoys/#{slug}", cache: !force)
           .then (resp) -> new Buoy(resp.data)
 
-      @history: (slug, amount) ->
-        $http.get("/api/buoys/#{slug}/history", { amount })
+      @history: (slug, amount, force=false) ->
+        $http.get("/api/buoys/#{slug}/history", { amount, cache: !force })
           .then (resp) -> resp.data
 
       #
