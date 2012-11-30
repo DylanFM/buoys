@@ -37,6 +37,7 @@ header {
   padding: 12px 0 .5em 0;
   border-bottom: 1px solid rgba($darkComplement, .2);
   background-color: transparentize($yellow, 0.35);
+  position: relative;
   
   h1 {
     margin: 0;
@@ -53,6 +54,16 @@ header {
         text-decoration: none;
       }
     }
+  }
+  .home, .refresh {
+    position: absolute;
+    top: 12px;
+  }
+  .home {
+    left: 10px;
+  }
+  .refresh {
+    right: 10px;
   }
 }
 
