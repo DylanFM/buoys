@@ -33,7 +33,7 @@ directives.directive 'historyGraph', [
           if graphs.length
             graphs.forEach (cont) ->
               # Empty
-              d3.select(cont).selectAll('path').remove()
+              d3.select(cont).selectAll('svg').remove()
               # Process
               history = $(cont).data 'history'
               if history.length
