@@ -1,5 +1,4 @@
 @import 'normalize';
-@import 'fontcustom';
 @import 'compass/css3';
 @import "compass/typography/links/hover-link";
 
@@ -47,39 +46,25 @@ header {
     text-transform: uppercase;
     text-align: center;
 
-  }
-  a {
-    #{$link} {
-      color: #009ea2;
-    }
-    #{$focus} {
-      color: #007d80;
-      text-decoration: none;
+    a {
+      #{$link} {
+        color: #009ea2;
+      }
+      #{$focus} {
+        color: #007d80;
+        text-decoration: none;
+      }
     }
   }
   .home, .refresh {
-    &:before {
-      position: absolute;
-      top: 4px;
-      display: inline-block;
-      font-family: "fontcustom";
-      font-weight: normal;
-      font-style: normal;
-      font-size: 18px;
-      padding: 5px;
-    }
+    position: absolute;
+    top: 12px;
   }
   .home {
-    &:before {
-      left: 5px;
-      content: "\f102";
-    }
+    left: 10px;
   }
   .refresh {
-    &:before {
-      right: 5px;
-      content: "\f103";
-    }
+    right: 10px;
   }
 }
 
