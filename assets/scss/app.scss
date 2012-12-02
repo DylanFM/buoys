@@ -35,14 +35,14 @@ header, .buoy, .buoys {
 }
 
 header {
-  padding: 12px 0 .5em 0;
+  padding: 11px 0 6px 0;
   border-bottom: 1px solid rgba($darkComplement, .2);
   background-color: transparentize($yellow, 0.35);
   position: relative;
   
   h1 {
     margin: 0;
-    font-size: 15px;
+    font-size: 17px;
     text-transform: uppercase;
     text-align: center;
 
@@ -58,13 +58,29 @@ header {
   }
   .home, .refresh {
     position: absolute;
-    top: 12px;
+    width: 24px;
+    background: url('/images/sprites.png') 0 0 no-repeat;
+    text-indent: -99em;
   }
   .home {
     left: 10px;
+    top: 8px;
+    height: 23px;
+    background-position: -150px 0;
+
+    #{$focus} {
+      background-position: 0 0;
+    }
   }
   .refresh {
     right: 10px;
+    top: 7px;
+    height: 25px;
+    background-position: -190px 0;
+
+    #{$focus} {
+      background-position: -40px 0;
+    }
   }
 }
 
@@ -263,5 +279,12 @@ only screen and (                min-resolution: 192dpi),
 only screen and (                min-resolution: 2dppx) { 
   body {
     background-image: url('/images/wavecut_@2X.png');
+    background-size: 162px auto;
+  }
+  header {
+    .home, .refresh {
+      background-image: url('/images/sprites@2X.png');
+      background-size: 300px auto;
+    }
   }
 }
