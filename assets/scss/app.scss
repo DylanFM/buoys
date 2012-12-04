@@ -150,30 +150,21 @@ header {
   .latest {
     position: relative;
     margin-bottom: 18px;
-    min-height: 72px;
   }
-  .direction {
+  .degrees {
+    width: 52px;
+    height: 78px;
     position: absolute;
-    left: 0;
     top: 6px;
-    width: 60px;
-    height: 30px;
-    padding: 16px 0 14px 0;
-    background: #007d80;
-    border: 1px solid #004b4d;
-    border-radius: 36px;
-    color: saturate($yellow, 20);
-    text-align: center;
-    font-size: 24px;
-    font-weight: 600;
+    left: 14px;
+    display: inline-block;
+    text-indent: -999em;
+    background: url('/images/sprites.png') -150px -160px no-repeat;
   }
-  .size {
-    padding-top: 8px;
+  .direction, .size, .period {
+    margin-left: 108px;
   }
-  .size, .period {
-    margin-left: 74px;
-  }
-  .hsig, .tsig {
+  .direction, .hsig, .tsig {
     font-size: 24px;
     font-weight: 600;
   }
@@ -277,10 +268,8 @@ only screen and (min-resolution: 192dpi) {
     background-image: url('/images/wavecut_@2X.png');
     background-size: 162px auto;
   }
-  header {
-    .home, .refresh {
-      background-image: url('/images/sprites@2X.png');
-      background-size: 300px auto;
-    }
+  .home, .refresh, .degrees {
+    background-image: url('/images/sprites@2X.png');
+    background-size: 300px auto;
   }
 }

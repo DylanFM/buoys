@@ -13,6 +13,14 @@ directives.directive 'refresh', [
 ]
 
 
+directives.directive 'compass', ->
+  (scope, el) ->
+    # Called before buoy is loaded, watch for data
+    scope.$watch 'buoy.latest.direction', (direction) ->
+      if direction
+        $(el[0]).animate rotate: "#{direction}deg"
+
+
 directives.directive 'historyGraph', [
   '$rootScope', 'Buoy'
   ($rootScope, Buoy) ->
