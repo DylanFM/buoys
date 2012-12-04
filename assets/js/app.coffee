@@ -1,4 +1,4 @@
-app = angular.module 'buoysApp.app', ['buoysApp.controllers']
+app = angular.module 'buoysApp.app', ['buoysApp.controllers', 'buoysApp.filters']
 
 app.config [
     '$routeProvider', '$locationProvider'

@@ -43,7 +43,6 @@ class Buoy
           # Duplicate... this stuff needs love here!
           buoys = _.map buoys, (buoy) ->
             if buoy.latest and buoy.latest.direction
-              buoy.latest.updated_ago = moment.unix(parseInt(buoy.latest.created_at, 10)).fromNow()
               buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
             buoy
           # Now return
@@ -64,7 +63,6 @@ class Buoy
         if buoy
           buoy.latest = response[1] # 2nd member is the latest reading
           # Doing on the server...
-          buoy.latest.updated_ago = moment.unix(parseInt(buoy.latest.created_at, 10)).fromNow()
           buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
           # All done...
           done err, buoy

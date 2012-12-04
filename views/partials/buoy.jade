@@ -17,4 +17,4 @@ article.buoy
   .history(history-graph="true", amount="6")
 
   footer
-    a.updated(href="{{buoy.url}}", title="Visit the live graph") Updated {{buoy.latest.updated_ago}}
+    a.updated(href="{{buoy.url}}", title="Visit the live graph") Updated {{buoy.latest.created_at | relative_time}}
