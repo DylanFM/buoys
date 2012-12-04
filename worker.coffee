@@ -16,6 +16,7 @@ Buoy.all (err, buoys) ->
 
     # Make note of the time
     now = moment()
+    now.utc() # It should be in UTC for DB storage
 
     do (buoy, now) ->
       console.log "#{buoy.name} - fetching graph from #{buoy.url}"
@@ -28,7 +29,7 @@ Buoy.all (err, buoys) ->
 
           console.log "#{buoy.name} - graph parsed, storing in redis", conditions
 
-          conditions.created_at = now.unix()
+          conditions.created_at = now.valueOf()
 
           # Issue with node redis in storing this object as a hash
           # Going to cast values of object
