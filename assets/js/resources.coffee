@@ -22,7 +22,7 @@ resources.factory 'Buoy', [
           _.find buoys, (b) -> b.slug is slug
 
       @history: (slug, amount, force=false) ->
-        $http.get("/api/buoys/#{slug}/history", { amount, cache: !force })
+        $http.get("/api/buoys/#{slug}/history?amount=#{amount}", cache: !force)
           .then (resp) -> resp.data
 
       #
