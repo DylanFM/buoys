@@ -1,7 +1,6 @@
 config  = require '../config'
 redis   = require 'redis'
 moment  = require 'moment'
-Compass = require './compass'
 _       = require 'underscore'
 
 class Buoy
