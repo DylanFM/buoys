@@ -1,12 +1,12 @@
 h3 Past {{amount}} hours
 
-ul
-  li
-    div.graph(data-history="{{history.hsig | json}}")
-    h4 Size
-  li
-    div.graph(data-history="{{history.tsig | json}}")
-    h4 Period
-  li
-    div.graph(data-history="{{history.directions | json}}", data-min="0", data-max="360")
-    h4 Direction
+.metric.with-graph.size
+  div.graph(data-history="{{history.hsig | json}}")
+  h4 Size
+.metric.with-graph.period
+  div.graph(data-history="{{history.tsig | json}}")
+  h4 Period
+.metric.directions
+  ul
+    li(ng-repeat="direction in history.directions") {{direction | compass}} 
+  h4 Direction

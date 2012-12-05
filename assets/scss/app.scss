@@ -154,36 +154,37 @@ header {
   .latest {
     position: relative;
     margin-bottom: 18px;
-  }
-  .compass {
-    width: 52px;
-    height: 78px;
-    position: absolute;
-    top: 6px;
-    left: 14px;
-    display: inline-block;
-    font-size: 0px;
-    background: url('/images/sprites.png') -150px -160px no-repeat;
-  }
-  .size, .period, .direction {
-    margin-left: 108px;
-  }
-  .hsig, .tsig, .simplified {
-    font-size: 24px;
-    font-weight: 600;
-  }
-  .hmax, .tp1, .degrees {
-    vertical-align: super;
-    font-size: 13px;
-    margin-left: 4px;
 
-    abbr, span {
-      padding-left: 2px;
-      text-transform: uppercase;
-      color: #009ea2;
+    .compass {
+      width: 52px;
+      height: 78px;
+      position: absolute;
+      top: 6px;
+      left: 14px;
+      display: inline-block;
+      font-size: 0px;
+      background: url('/images/sprites.png') -150px -160px no-repeat;
     }
-    abbr {
-      border: none;
+    .size, .period, .direction {
+      margin-left: 108px;
+    }
+    .hsig, .tsig, .simplified {
+      font-size: 24px;
+      font-weight: 600;
+    }
+    .hmax, .tp1, .degrees {
+      vertical-align: super;
+      font-size: 13px;
+      margin-left: 4px;
+
+      abbr, span {
+        padding-left: 2px;
+        text-transform: uppercase;
+        color: #009ea2;
+      }
+      abbr {
+        border: none;
+      }
     }
   }
 
@@ -211,37 +212,62 @@ header {
   h4 {
     font-weight: 400;
   }
-  ul {
-    list-style: none;
+  .metric {
+    margin-bottom: 15px;
+    position: relative;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .with-graph {
+    height: 60px;
+  }
+  .graph {
+    height: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0; //80px;
+    border-bottom: 1px solid $yellow;
+    border-left: 1px solid $yellow;
+
+    // SVG
+    path {
+      stroke-width: 2px;
+      fill: none;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      //shape-rendering: crispEdges;
+    }
+  }
+  .period path {
+    stroke: red;
+  }
+  .size path {
+    stroke: #009ea2;
+  }
+  .directions ul {
+    margin: 0; //80px 0 0;
     padding: 0;
-    margin: .8em 0 0 0;
-  }
-  li {
-    margin-bottom: 10px;
-  }
-  li:last-child {
-    margin-bottom: 0;
+    list-style: none;
+    @include display-box;
+    @include box-orient(horizontal);
+    @include box-align(stretch);
+
+    li {
+      @include box-flex(1);
+      text-align: center;
+      color: #009ea2;
+    }
   }
   h4 {
-    display: inline-block;
-    margin-left: 10px;
-  }
-}
-.graph {
-  width: 100px;
-  height: 15px;
-  display: inline-block;
-  position: relative;
-  top: 5px;
-
-  // SVG
-  path {
-    stroke: #009ea2;
-    stroke-width: 2px;
-    fill: none;
-    stroke-linejoin: round;
-    stroke-linecap: round;
-    //shape-rendering: crispEdges;
+    display: none; // inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70px;
   }
 }
 
