@@ -13,6 +13,7 @@ body {
   color: desaturate(darken($yellow, 75), 60);
   font-family: "proxima-nova-soft", sans-serif;
   font-weight: 400;
+  overflow: hidden;
 }
 
 h1, h2, b {
@@ -60,7 +61,7 @@ header {
     position: absolute;
     width: 24px;
     background: url('/images/sprites.png') 0 0 no-repeat;
-    text-indent: -99em;
+    text-indent: -999em;
   }
   .home {
     left: 10px;
