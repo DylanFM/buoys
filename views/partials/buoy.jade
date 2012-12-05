@@ -2,18 +2,22 @@ article.buoy
   h1 {{buoy.name}}
 
   .latest
-    .degrees(compass="true") {{buoy.latest.direction}}
+    .compass(compass="true") {{buoy.latest.direction}}
     .size
       span.hsig {{buoy.latest.hsig}}m
       span.hmax
         {{buoy.latest.hmax}}m
-        span.max max
+        span max
     .period
       span.tsig {{buoy.latest.tsig}}sec
       span.tp1 
         {{buoy.latest.tp1}}sec
-        span.max max
-    .direction {{buoy.latest.directionString}}
+        span max
+    .direction
+      span.simplified {{buoy.latest.directionString}}
+      span.degrees
+        {{buoy.latest.direction}}&deg;
+        abbr(title="True north") TN
   .history(history-graph="true", amount="6")
 
   footer

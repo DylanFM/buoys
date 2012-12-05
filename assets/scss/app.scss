@@ -8,12 +8,15 @@ $focus: "&:active, &:hover, &:focus";
 $yellow: #fffcf4;
 $darkComplement: darken(complement($yellow), 70);
 
+html {
+  overflow: hidden;
+}
+
 body {
   background: url('/images/wavecut_@2X.png') 0 0 repeat;
   color: desaturate(darken($yellow, 75), 60);
   font-family: "proxima-nova-soft", sans-serif;
   font-weight: 400;
-  overflow: hidden;
 }
 
 h1, h2, b {
@@ -152,32 +155,35 @@ header {
     position: relative;
     margin-bottom: 18px;
   }
-  .degrees {
+  .compass {
     width: 52px;
     height: 78px;
     position: absolute;
     top: 6px;
     left: 14px;
     display: inline-block;
-    text-indent: -999em;
+    font-size: 0px;
     background: url('/images/sprites.png') -150px -160px no-repeat;
   }
-  .direction, .size, .period {
+  .size, .period, .direction {
     margin-left: 108px;
   }
-  .direction, .hsig, .tsig {
+  .hsig, .tsig, .simplified {
     font-size: 24px;
     font-weight: 600;
   }
-  .hmax, .tp1 {
+  .hmax, .tp1, .degrees {
     vertical-align: super;
     font-size: 13px;
     margin-left: 4px;
 
-    .max {
+    abbr, span {
       padding-left: 2px;
       text-transform: uppercase;
       color: #009ea2;
+    }
+    abbr {
+      border: none;
     }
   }
 
@@ -273,7 +279,7 @@ only screen and (                min-resolution: 2dppx) {
     background-image: url('/images/wavecut_@2X.png');
     background-size: 162px auto;
   }
-  .home, .refresh, .degrees {
+  .home, .refresh, .compass {
     background-image: url('/images/sprites@2X.png');
     background-size: 300px auto;
   }
