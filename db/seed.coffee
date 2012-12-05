@@ -18,12 +18,12 @@ buoys = [
     url: 'http://mhl.nsw.gov.au/data/coffs.gif'
     pos: '2'
   }
-  # {
-  #   slug: 'crowdy-head'
-  #   name: 'Crowdy Head'
-  #   url: 'http://mhl.nsw.gov.au/data/crowdy.gif'
-  #   pos: '3'
-  # }
+  {
+    slug: 'crowdy-head'
+    name: 'Crowdy Head'
+    url: 'http://mhl.nsw.gov.au/data/crowdy.gif'
+    pos: '3'
+  }
   {
     slug: 'sydney'
     name: 'Sydney'
