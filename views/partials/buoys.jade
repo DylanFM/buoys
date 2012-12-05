@@ -2,4 +2,4 @@ ul.buoys
   li(ng-repeat="buoy in buoys")
     a(ng-href="/{{buoy.slug}}", title="View the {{buoy.name}} buoy")
       b {{buoy.name}}
-      span.latest {{buoy.latest.hsig}}m {{buoy.latest.directionString}} @ {{buoy.latest.tsig}}s        
+      span.latest {{buoy.latest.hsig}}m {{buoy.latest.direction | compass}} @ {{buoy.latest.tsig}}s        

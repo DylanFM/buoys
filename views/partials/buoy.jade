@@ -14,7 +14,7 @@ article.buoy
         {{buoy.latest.tp1}}sec
         span max
     .direction
-      span.simplified {{buoy.latest.directionString}}
+      span.simplified {{buoy.latest.direction | compass}}
       span.degrees
         {{buoy.latest.direction}}&deg;
         abbr(title="True north") TN

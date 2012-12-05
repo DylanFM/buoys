@@ -40,11 +40,6 @@ class Buoy
         else
           # Combine the data sets
           buoys = _.reduce(_.zip(buoys, response), latestToBuoy, [])
-          # Duplicate... this stuff needs love here!
-          buoys = _.map buoys, (buoy) ->
-            if buoy.latest and buoy.latest.direction
-              buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
-            buoy
           # Now return
           done err, buoys
 
@@ -62,8 +57,6 @@ class Buoy
         buoy = response[0] # 1st member should be the buoy data
         if buoy
           buoy.latest = response[1] # 2nd member is the latest reading
-          # Doing on the server...
-          buoy.latest.directionString = Compass.directionFromDegrees parseFloat(buoy.latest.direction, 10)
           # All done...
           done err, buoy
         else
