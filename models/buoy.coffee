@@ -88,6 +88,8 @@ class Buoy
           return
 
         # History is an array of conditions, time ordered
+        history.reverse() # It needs to be reveresed to be ordered by date ascending
+
         # Along with this we should return arrays for the past hsig, tsig and dir.
         # Thinking of this is that we can cache here and do it once per hour,
         # saving pushing it to the client and having them do it each request.
