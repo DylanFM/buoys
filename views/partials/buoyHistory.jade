@@ -1,24 +1,18 @@
-h3 Past {{amount}} hours
-
-.metric.with-graph.size
-  div.graph(data-history="{{history.hsig | json}}")
-.metric.with-graph.period
-  div.graph(data-history="{{history.tsig | json}}")
+.graph(data-tsig="{{history.tsig | json}}", data-hsig="{{history.hsig | json}}")
 table.metric.values
-  thead
+  tbody
+    tr.size
+      th(scope="row") Size
+      td(ng-repeat="reading in history.history") {{reading.hsig}}m
+    tr.period
+      th(scope="row") Period
+      td(ng-repeat="reading in history.history") {{reading.tsig}}s
+    tr.direction
+      th(scope="row") Direction
+      td(ng-repeat="reading in history.history") 
+        .compass(compass="true") {{reading.direction}}
+  tfoot
     tr
       //- Header cells here will be a unit of time (e.g. 20H)
       th(scope="row") Time
       th(scope="col", ng-repeat="reading in history.history") {{reading.created_at | hours24}}
-  tbody
-    tr
-      th(scope="row") Size
-      td(ng-repeat="reading in history.history") {{reading.hsig}}m
-    tr
-      th(scope="row") Period
-      td(ng-repeat="reading in history.history") {{reading.tsig}}s
-    tr
-      th(scope="row") Direction
-      td(ng-repeat="reading in history.history") 
-        .compass(compass="true") {{reading.direction}}
-

@@ -19,7 +19,7 @@ body {
   font-weight: 400;
 }
 
-h1, h2, b {
+b {
   font-weight: 600;
 }
 
@@ -35,7 +35,7 @@ a {
 }
 
 header, .buoy, .buoys {
-  @include box-shadow(rgba($darkComplement, .2) 0 0 5px);
+  @include box-shadow(rgba($darkComplement, .2) 0 1px 5px);
 }
 
 header {
@@ -46,6 +46,7 @@ header {
   
   h1 {
     margin: 0;
+    font-weight: 600;
     font-size: 17px;
     text-transform: uppercase;
     text-align: center;
@@ -98,7 +99,7 @@ header {
   border-radius: 2px;
   border: 1px solid rgba($darkComplement, .15);
   border-top-color: rgba($darkComplement, .1);
-  border-bottom-color: rgba($darkComplement, .2);
+  border-bottom-color: rgba($darkComplement, .175);
   background-color: transparentize($yellow, 0.3);
 }
 
@@ -146,7 +147,10 @@ header {
   padding: .8em 1em;
 
   h1 {
-    margin: 0 0 18px 0;
+    margin: 0 0 10px 0;
+    color: #009ea2;
+    font-size: 24px;
+    font-weight: 400;
   }
 }
 
@@ -189,46 +193,21 @@ header {
   }
 
   footer {
-    border-top: 1px solid desaturate(darken($yellow, 10), 70);
-    padding-top: 18px;
     margin: 0;
 
     .updated {
       margin-left: 5px;
-      font-style: italic;
     }
   }
 
 }
 
 .history {
-  border-top: 1px solid desaturate(darken($yellow, 10), 70);
-  padding-top: 18px;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
 
-  h3 {
-    margin: 0;
-  }
-  .metric {
-    margin-bottom: 15px;
-    position: relative;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-  .with-graph {
-    height: 60px;
-  }
   .graph {
-    height: 100%;
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0; //80px;
-    border-bottom: 1px solid $yellow;
-    border-left: 1px solid $yellow;
+    height: 100px;
+    margin-bottom: 10px;
 
     // SVG
     path {
@@ -238,19 +217,35 @@ header {
       stroke-linecap: round;
       //shape-rendering: crispEdges;
     }
-  }
-  .period path {
-    stroke: red;
-  }
-  .size path {
-    stroke: #009ea2;
+    .period {
+      stroke: #009ea2;
+    }
+    .size {
+      stroke: #006c6f;
+    }
   }
   table {
     width: 100%;
     text-align: center;
 
+    td, th {
+      border-right: 1px solid desaturate(darken($yellow, 10), 70);
+      
+      &:last-child {
+        border-right: none;
+      }
+    }
+    th {
+      font-weight: 400;
+    }
     th:first-child {
       display: none;
+    }
+    .period {
+      color: #009ea2;
+    }
+    .size {
+      color: #006c6f;
     }
   }
   .compass {
@@ -259,6 +254,8 @@ header {
     display: inline-block;
     font-size: 0px;
     background: url('/images/sprites.png') -100px -160px no-repeat;
+    position: relative;
+    top: -10px;
   }
 }
 

@@ -35,6 +35,21 @@ directives.directive 'historyGraph', [
         # Support refreshing
         $rootScope.$on 'refresh', (e) ->
           Buoy.history(scope.buoy.slug, scope.amount, true).then (history) -> scope.history = history
+        # Ensure numerical values
+        cleanData = (raw) ->
+          return unless raw?.length
+          $.map JSON.parse(raw), (n,i) -> 
+            if n then parseFloat(n, 10) else 0
+        # Function for getting a line
+        getLine = (data, width, height) ->
+          min    = d3.min data
+          max    = d3.max data
+          xScale = d3.scale.linear().domain([0, data.length-1]).rangeRound [2, width-2]
+          yScale = d3.scale.linear().domain([max, min]).nice().rangeRound [2, height-2]
+          line   = d3.svg.line()
+          line.x (d, i) -> xScale(i)
+          line.y (d)    -> yScale(d)
+          line
         # Watch for history changes
         scope.$watch 'history', (history) ->
           graphs = $(el[0]).find '.graph'
@@ -42,21 +57,18 @@ directives.directive 'historyGraph', [
             graphs.forEach (cont) ->
               # Empty
               d3.select(cont).selectAll('svg').remove()
+              # The values
+              tsig = cleanData $(cont).data('tsig')
+              hsig = cleanData $(cont).data('hsig')
               # Process
-              history = $(cont).data 'history'
-              if history.length
-                data   = $.map JSON.parse(history), (n,i) -> 
-                  if n then parseFloat(n, 10) else 0
-                min    = $(cont).data('min') or d3.min data
-                max    = $(cont).data('max') or d3.max data
+              if tsig?.length or hsig?.length
                 width  = parseInt $(cont).css('width'), 10
                 height = parseInt $(cont).css('height'), 10
-                xScale = d3.scale.linear().domain([0, data.length-1]).rangeRound [2, width-2]
-                yScale = d3.scale.linear().domain([min, max]).nice().rangeRound [2, height-2]
-                line   = d3.svg.line()
-                line.x (d, i) -> xScale(i)
-                line.y (d) -> yScale(d)
+                tLine = getLine tsig, width, height
+                hLine = getLine hsig, width, height
+                # Finish up graphing
                 graph  = d3.select(cont).append('svg:svg').attr('width', '100%').attr('height', '100%')
-                graph.append('svg:path').attr('d', line(data))
+                graph.append('svg:path').attr('d', tLine(tsig)).attr('class', 'period')
+                graph.append('svg:path').attr('d', hLine(hsig)).attr('class', 'size')
     }
 ]
