@@ -194,19 +194,14 @@ header {
 
   footer {
     margin: 0;
-
-    .updated {
-      margin-left: 5px;
-    }
   }
-
 }
 
 .history {
   margin-bottom: 10px;
 
   .graph {
-    height: 80px;
+    height: 70px;
     margin-bottom: 10px;
 
     // SVG
@@ -218,7 +213,7 @@ header {
       //shape-rendering: crispEdges;
     }
     .period {
-      stroke: #009ea2;
+      stroke: complement(#006c6f);
     }
     .size {
       stroke: #006c6f;
@@ -242,7 +237,7 @@ header {
       display: none;
     }
     .period {
-      color: #009ea2;
+      color: complement(#006c6f);
     }
     .size {
       color: #006c6f;

@@ -524,15 +524,12 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
 .buoy footer {
   margin: 0;
 }
-.buoy footer .updated {
-  margin-left: 5px;
-}
 
 .history {
   margin-bottom: 10px;
 }
 .history .graph {
-  height: 80px;
+  height: 70px;
   margin-bottom: 10px;
 }
 .history .graph path {
@@ -542,7 +539,7 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
   stroke-linecap: round;
 }
 .history .graph .period {
-  stroke: #009ea2;
+  stroke: #6f0300;
 }
 .history .graph .size {
   stroke: #006c6f;
@@ -564,7 +561,7 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
   display: none;
 }
 .history table .period {
-  color: #009ea2;
+  color: #6f0300;
 }
 .history table .size {
   color: #006c6f;
