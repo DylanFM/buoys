@@ -532,7 +532,7 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
   margin-bottom: 10px;
 }
 .history .graph {
-  height: 100px;
+  height: 80px;
   margin-bottom: 10px;
 }
 .history .graph path {
