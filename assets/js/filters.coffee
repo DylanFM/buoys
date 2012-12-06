@@ -17,7 +17,7 @@ filters.filter 'minusHours', [
         hours   = now.diff local, 'hours'
         minutes = now.diff local, 'minutes' if hours < 1
         value   = minutes or hours
-        unit    = if minutes then 'm' else 'h'
+        unit    = if minutes then 'min' else 'hr'
         "−#{value}#{unit}"
 ]
 

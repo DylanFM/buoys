@@ -16,5 +16,4 @@ table.metric.values
       //- Header cells here will be a unit of time (e.g. 20H)
       th(scope="row") Time
       th(scope="col", ng-repeat="reading in history.history") 
-        {{reading.created_at | hours24}}
         span.relative {{reading.created_at | minusHours}}
