@@ -14,9 +14,9 @@ directives.directive 'refresh', [
 
 
 directives.directive 'compass', ->
-  (scope, el) ->
+  (scope, el, attrs) ->
     # Called before buoy is loaded, watch for data
-    scope.$watch 'buoy.latest.direction', (direction) ->
+    attrs.$observe 'direction', (direction) ->
       if direction
         $(el[0]).animate rotate: "#{direction}deg"
 

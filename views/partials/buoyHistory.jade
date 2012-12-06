@@ -10,7 +10,7 @@ table.metric.values
     tr.direction
       th(scope="row") Direction
       td(ng-repeat="reading in history.history") 
-        .compass(compass="true") {{reading.direction}}
+        .compass(compass="true", direction="{{reading.direction}}") {{reading.direction}}
   tfoot
     tr
       //- Header cells here will be a unit of time (e.g. 20H)
