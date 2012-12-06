@@ -402,28 +402,29 @@ header h1 a:active, header h1 a:hover, header h1 a:focus {
   text-decoration: none;
 }
 header .home, header .refresh {
+  padding: 5px;
   position: absolute;
   width: 24px;
   background: url("/images/sprites.png") 0 0 no-repeat;
   text-indent: -999em;
 }
 header .home {
-  left: 10px;
-  top: 8px;
+  left: 5px;
+  top: 3px;
   height: 23px;
-  background-position: -150px 0;
+  background-position: -145px 5px;
 }
 header .home:active, header .home:hover, header .home:focus {
-  background-position: 0 0;
+  background-position: 5px 5px;
 }
 header .refresh {
-  right: 10px;
-  top: 7px;
+  right: 5px;
+  top: 2px;
   height: 25px;
-  background-position: -190px 0;
+  background-position: -190px 5px;
 }
 header .refresh:active, header .refresh:hover, header .refresh:focus {
-  background-position: -40px 0;
+  background-position: -40px 5px;
 }
 
 .view {

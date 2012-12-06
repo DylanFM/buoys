@@ -62,29 +62,30 @@ header {
     }
   }
   .home, .refresh {
+    padding: 5px; // Extra hit space
     position: absolute;
     width: 24px;
     background: url('/images/sprites.png') 0 0 no-repeat;
     text-indent: -999em;
   }
   .home {
-    left: 10px;
-    top: 8px;
+    left: 5px;
+    top: 3px;
     height: 23px;
-    background-position: -150px 0;
+    background-position: -145px 5px;
 
     #{$focus} {
-      background-position: 0 0;
+      background-position: 5px 5px;
     }
   }
   .refresh {
-    right: 10px;
-    top: 7px;
+    right: 5px;
+    top: 2px;
     height: 25px;
-    background-position: -190px 0;
+    background-position: -190px 5px;
 
     #{$focus} {
-      background-position: -40px 0;
+      background-position: -40px 5px;
     }
   }
 }
