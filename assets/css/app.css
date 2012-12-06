@@ -575,6 +575,11 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
   position: relative;
   top: -10px;
 }
+.history .relative {
+  font-size: 13px;
+  display: block;
+  color: #928562;
+}
 
 footer {
   font-size: 13px;
