@@ -184,7 +184,7 @@ header {
       abbr, span {
         padding-left: 2px;
         text-transform: uppercase;
-        color: #009ea2;
+        color: desaturate(darken($yellow, 50), 80);
       }
       abbr {
         border: none;

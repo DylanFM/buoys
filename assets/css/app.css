@@ -516,7 +516,7 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
 .buoy .latest .hmax abbr, .buoy .latest .hmax span, .buoy .latest .tp1 abbr, .buoy .latest .tp1 span, .buoy .latest .degrees abbr, .buoy .latest .degrees span {
   padding-left: 2px;
   text-transform: uppercase;
-  color: #009ea2;
+  color: #928562;
 }
 .buoy .latest .hmax abbr, .buoy .latest .tp1 abbr, .buoy .latest .degrees abbr {
   border: none;
