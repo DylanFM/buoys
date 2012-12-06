@@ -604,7 +604,9 @@ footer .about {
     background-size: 162px auto;
   }
 
-  .home, .refresh, .compass {
+  header .home, header .refresh,
+  .buoy .latest .compass,
+  .history .compass {
     background-image: url("/images/sprites@2X.png");
     background-size: 300px auto;
   }
