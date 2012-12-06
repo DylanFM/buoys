@@ -19,5 +19,6 @@ table.metric.values
       td(ng-repeat="reading in history.history") {{reading.tsig}}s
     tr
       th(scope="row") Direction
-      td(ng-repeat="reading in history.history") {{reading.direction | compass}}
+      td(ng-repeat="reading in history.history") 
+        .compass(compass="true") {{reading.direction}}
 

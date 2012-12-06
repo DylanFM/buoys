@@ -608,27 +608,23 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
   margin-bottom: 18px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003209}}
-.history h3, .history h4 {
+.history h3 {
   margin: 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003212}}
-.history h4 {
-  font-weight: 400;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003215}}
 .history .metric {
   margin-bottom: 15px;
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003219}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003216}}
 .history .metric:last-child {
   margin-bottom: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003223}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003220}}
 .history .with-graph {
   height: 60px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003226}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003223}}
 .history .graph {
   height: 100%;
   display: inline-block;
@@ -639,47 +635,55 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
   border-bottom: 1px solid #fffcf4;
   border-left: 1px solid #fffcf4;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003237}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003234}}
 .history .graph path {
   stroke-width: 2px;
   fill: none;
   stroke-linejoin: round;
   stroke-linecap: round;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003245}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003242}}
 .history .period path {
   stroke: red;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003248}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003245}}
 .history .size path {
   stroke: #009ea2;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003251}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003248}}
 .history table {
   width: 100%;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003255}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003252}}
 .history table th:first-child {
   display: none;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003256}}
+.history .compass {
+  width: 16px;
+  height: 24px;
+  display: inline-block;
+  font-size: 0px;
+  background: url("/images/sprites.png") -100px -160px no-repeat;
+}
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003261}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003265}}
 footer {
   font-size: 13px;
   color: #009ea2;
   margin: 10px;
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003268}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003272}}
 footer a:link, footer a:visited {
   color: #007d80;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003271}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003275}}
 footer a:active, footer a:hover, footer a:focus {
   color: #009ea2;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003275}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003279}}
 footer .about {
   position: absolute;
   top: 0;
@@ -688,13 +692,13 @@ footer .about {
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003291}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003295}}
   body {
     background-image: url("/images/wavecut_@2X.png");
     background-size: 162px auto;
   }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003295}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/dylan\/Development\/buoys\/assets\/scss\/app\.scss}line{font-family:\00003299}}
   .home, .refresh, .compass {
     background-image: url("/images/sprites@2X.png");
     background-size: 300px auto;
