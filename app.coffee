@@ -10,6 +10,7 @@ app.configure ->
   app.set 'views', "#{__dirname}/views"
   app.set 'view engine', 'jade'
   app.use require('connect-assets')()
+  app.use express.static "#{__dirname}/public"
   app.use app.router
 
   # Handle 404s
