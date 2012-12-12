@@ -204,7 +204,6 @@ header {
   .graph {
     height: 70px;
     overflow: hidden;
-    margin-bottom: 10px;
 
     // SVG
     path {
@@ -212,7 +211,7 @@ header {
       stroke-linejoin: round;
       stroke-linecap: round;
       fill: none;
-      fill-opacity: 0.1;
+      fill-opacity: 0.05;
       stroke-opacity: 0.7;
       //shape-rendering: crispEdges;
     }
@@ -236,6 +235,8 @@ header {
   table {
     width: 100%;
     text-align: center;
+    font-size: 13px;
+    border-top: 1px solid desaturate(darken($yellow, 10), 70);
 
     td, th {
       border-right: 1px solid desaturate(darken($yellow, 10), 70);
@@ -250,11 +251,16 @@ header {
     th:first-child {
       display: none;
     }
+    td {
+      padding: 3px 0;
+    }
     .period {
       color: complement(#006c6f);
+      background-color: transparentize(lighten(complement(#006c6f), 20), 0.95);
     }
     .size {
       color: #006c6f;
+      background-color: transparentize(lighten(#006c6f, 20), .95);
     }
   }
   .compass {
@@ -267,7 +273,6 @@ header {
     top: -10px;
   }
   .relative {
-    font-size: 13px;
     display: block;
     color: desaturate(darken($yellow, 50), 80);
   }

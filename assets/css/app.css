@@ -532,14 +532,13 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
 .history .graph {
   height: 70px;
   overflow: hidden;
-  margin-bottom: 10px;
 }
 .history .graph path {
   stroke-width: 2px;
   stroke-linejoin: round;
   stroke-linecap: round;
   fill: none;
-  fill-opacity: 0.1;
+  fill-opacity: 0.05;
   stroke-opacity: 0.7;
 }
 .history .graph .period {
@@ -559,6 +558,8 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
 .history table {
   width: 100%;
   text-align: center;
+  font-size: 13px;
+  border-top: 1px solid #e9e4d7;
 }
 .history table td, .history table th {
   border-right: 1px solid #e9e4d7;
@@ -572,11 +573,16 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
 .history table th:first-child {
   display: none;
 }
+.history table td {
+  padding: 3px 0;
+}
 .history table .period {
   color: #6f0300;
+  background-color: rgba(213, 6, 0, 0.05);
 }
 .history table .size {
   color: #006c6f;
+  background-color: rgba(0, 207, 213, 0.05);
 }
 .history .compass {
   width: 16px;
@@ -588,7 +594,6 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
   top: -10px;
 }
 .history .relative {
-  font-size: 13px;
   display: block;
   color: #928562;
 }
