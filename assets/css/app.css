@@ -525,6 +525,10 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
 .buoy footer {
   margin: 0;
 }
+.buoy footer .updated {
+  color: #928562;
+  float: right;
+}
 
 .history {
   margin-bottom: 10px;

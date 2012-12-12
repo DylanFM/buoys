@@ -195,6 +195,11 @@ header {
 
   footer {
     margin: 0;
+
+    .updated {
+      color: desaturate(darken($yellow, 50), 80);
+      float: right;
+    }
   }
 }
 
