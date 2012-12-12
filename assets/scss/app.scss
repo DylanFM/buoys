@@ -203,21 +203,34 @@ header {
 
   .graph {
     height: 70px;
+    overflow: hidden;
     margin-bottom: 10px;
 
     // SVG
     path {
       stroke-width: 2px;
-      fill: none;
       stroke-linejoin: round;
       stroke-linecap: round;
+      fill: none;
+      fill-opacity: 0.1;
+      stroke-opacity: 0.7;
       //shape-rendering: crispEdges;
     }
     .period {
       stroke: complement(#006c6f);
+
+      &.area {
+        stroke: none;
+        fill: lighten(complement(#006c6f), 20);
+      }
     }
     .size {
       stroke: #006c6f;
+
+      &.area {
+        stroke: none;
+        fill: lighten(#006c6f, 20);
+      }
     }
   }
   table {

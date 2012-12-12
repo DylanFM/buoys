@@ -531,19 +531,30 @@ header .refresh:active, header .refresh:hover, header .refresh:focus {
 }
 .history .graph {
   height: 70px;
+  overflow: hidden;
   margin-bottom: 10px;
 }
 .history .graph path {
   stroke-width: 2px;
-  fill: none;
   stroke-linejoin: round;
   stroke-linecap: round;
+  fill: none;
+  fill-opacity: 0.1;
+  stroke-opacity: 0.7;
 }
 .history .graph .period {
   stroke: #6f0300;
 }
+.history .graph .period.area {
+  stroke: none;
+  fill: #d50600;
+}
 .history .graph .size {
   stroke: #006c6f;
+}
+.history .graph .size.area {
+  stroke: none;
+  fill: #00cfd5;
 }
 .history table {
   width: 100%;

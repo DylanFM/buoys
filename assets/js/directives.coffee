@@ -47,9 +47,22 @@ directives.directive 'historyGraph', [
           xScale = d3.scale.linear().domain([0, data.length-1]).rangeRound [2, width-2]
           yScale = d3.scale.linear().domain([max, min]).nice().rangeRound [2, height-2]
           line   = d3.svg.line()
+          line.interpolate 'basis'
           line.x (d, i) -> xScale(i)
           line.y (d)    -> yScale(d)
           line
+        # For getting area
+        getArea = (data, width, height) ->
+          min    = d3.min data
+          max    = d3.max data
+          xScale = d3.scale.linear().domain([0, data.length-1]).rangeRound [2, width-2]
+          yScale = d3.scale.linear().domain([max, min]).nice().rangeRound [2, height-2]
+          area   = d3.svg.area()
+          area.interpolate 'basis'
+          area.x (d, i) -> xScale(i)
+          area.y0 height
+          area.y1 (d)   -> yScale(d)
+          area
         # Watch for history changes
         scope.$watch 'history', (history) ->
           graphs = $(el[0]).find '.graph'
@@ -66,9 +79,13 @@ directives.directive 'historyGraph', [
                 height = parseInt $(cont).css('height'), 10
                 tLine = getLine tsig, width, height
                 hLine = getLine hsig, width, height
+                tArea = getArea tsig, width, height
+                hArea = getArea hsig, width, height
                 # Finish up graphing
                 graph  = d3.select(cont).append('svg:svg').attr('width', '100%').attr('height', '100%')
-                graph.append('svg:path').attr('d', tLine(tsig)).attr('class', 'period')
+                graph.append('svg:path').attr('d', hArea(hsig)).attr('class', 'size area')
                 graph.append('svg:path').attr('d', hLine(hsig)).attr('class', 'size')
+                graph.append('svg:path').attr('d', tArea(tsig)).attr('class', 'period area')
+                graph.append('svg:path').attr('d', tLine(tsig)).attr('class', 'period')
     }
 ]
