@@ -610,11 +610,11 @@ footer a:link, footer a:visited {
 footer a:active, footer a:hover, footer a:focus {
   color: #009ea2;
 }
-footer .about {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font-weight: bold;
+footer .copyright {
+  font-weight: 600;
+}
+footer .affil {
+  margin-top: 5px;
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
