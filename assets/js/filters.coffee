@@ -1,27 +1,6 @@
 filters = angular.module 'buoysApp.filters', []
 
-filters.filter 'minusHours', [
-  '$window'
-  ($window) ->
-    # NOTE duplicated with other time filters
-    # TODO move this to a service or something
-    (time) ->
-      if time and $window?.moment
-        if time.length is 10                         # Old, we were storing seconds since epoch not ms
-          time = "#{time}000"                        # Add milliseconds for backwards compatability
-        utc = $window.moment.utc(parseInt(time, 10)) # Parse the time, stored in UTC (only parses ms)
-        # TODO later on we can remove this stuff, as the old formatted times 
-        #      will be long gone or I can write a script to fix them up 
-        local   = utc.local() # We want this as local though
-        now     = moment().local()
-        hours   = now.diff local, 'hours'
-        minutes = now.diff local, 'minutes' if hours < 1
-        value   = minutes or hours
-        unit    = if minutes then 'min' else 'hr'
-        "−#{value}#{unit}"
-]
-
-filters.filter 'hours24', [
+filters.filter 'hours12', [
   '$window'
   ($window) ->
     # NOTE duplicated with relative_time filter
@@ -34,7 +13,7 @@ filters.filter 'hours24', [
         # TODO later on we can remove this stuff, as the old formatted times 
         #      will be long gone or I can write a script to fix them up 
         local = utc.local() # We want this as local though
-        "#{local.hours()}h"
+        local.format 'ha'
 ]
 
 # TODO change name to camel case
