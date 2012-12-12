@@ -44,7 +44,7 @@ directives.directive 'historyGraph', [
         getLine = (data, width, height) ->
           min    = d3.min data
           max    = d3.max data
-          xScale = d3.scale.linear().domain([0, data.length-1]).rangeRound [2, width-2]
+          xScale = d3.scale.linear().domain([0, data.length-1]).rangeRound [0, width]
           yScale = d3.scale.linear().domain([max, min]).nice().rangeRound [2, height-2]
           line   = d3.svg.line()
           line.interpolate 'basis'
@@ -55,7 +55,7 @@ directives.directive 'historyGraph', [
         getArea = (data, width, height) ->
           min    = d3.min data
           max    = d3.max data
-          xScale = d3.scale.linear().domain([0, data.length-1]).rangeRound [2, width-2]
+          xScale = d3.scale.linear().domain([0, data.length-1]).rangeRound [0, width]
           yScale = d3.scale.linear().domain([max, min]).nice().rangeRound [2, height-2]
           area   = d3.svg.area()
           area.interpolate 'basis'
