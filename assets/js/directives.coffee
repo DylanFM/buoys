@@ -38,8 +38,18 @@ directives.directive 'historyGraph', [
         # Ensure numerical values
         cleanData = (raw) ->
           return unless raw?.length
-          $.map JSON.parse(raw), (n,i) -> 
-            if n then parseFloat(n, 10) else 0
+          values = JSON.parse(raw)
+          $.map values, (n,i) -> 
+            # If we have a value, return it as a float 
+            return parseFloat(n, 10) if n
+            # We don't have a value
+            # If there's a previous value
+            # use the previous value
+            return parseFloat(values[i-1]) if i > 0
+            # Otherwise use the next value
+            return parseFloat(values[i+1]) if values[i+1]
+            # Fall back to 0
+            0
         # Function for getting a line
         getLine = (data, width, height) ->
           min    = d3.min data
