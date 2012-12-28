@@ -1,5 +1,19 @@
 filters = angular.module 'buoysApp.filters', []
 
+filters.filter 'metresReading', ->
+  (value) ->
+    if value?
+      "#{value}m"
+    else
+      "?" # TODO find a way of communicating this more clearly
+
+filters.filter 'secondsReading', ->
+  (value) ->
+    if value?
+      "#{value}s"
+    else
+      "?" # TODO find a way of communicating this more clearly
+
 filters.filter 'hours12', [
   '$window'
   ($window) ->

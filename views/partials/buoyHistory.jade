@@ -3,10 +3,10 @@ table.metric.values
   tbody
     tr.size
       th(scope="row") Size
-      td(ng-repeat="reading in history.history") {{reading.hsig}}m
+      td(ng-repeat="reading in history.history") {{reading.hsig | metresReading}}
     tr.period
       th(scope="row") Period
-      td(ng-repeat="reading in history.history") {{reading.tsig}}s
+      td(ng-repeat="reading in history.history") {{reading.tsig | secondsReading}}
     tr.direction
       th(scope="row") Direction
       td(ng-repeat="reading in history.history") 

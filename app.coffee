@@ -48,6 +48,5 @@ app.get '/api/buoys/:slug', apiRoutes.buoy
 app.get '/api/buoys/:slug/history', apiRoutes.buoyHistory
 
 # Start server
-
 app.listen config.get('PORT'), ->
   console.log "Express server listening on port #{@address().port}"
