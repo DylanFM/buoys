@@ -267,6 +267,20 @@ header {
       color: #006c6f;
       background-color: transparentize(lighten(#006c6f, 20), .95);
     }
+    // NOTE hard-coding this stuff
+    // We're got 24 hours of data visible. I just want 6 columns visible out of the 24
+    // each 4 hours apart... e.g. 24, 20, 16, 12, 8, 4
+    // Keep in mind that there's another column at the beginning - we're offsetting by 1
+    td, th {
+      &:nth-child(24), &:nth-child(23), &:nth-child(22),
+      &:nth-child(20), &:nth-child(19), &:nth-child(18),
+      &:nth-child(16), &:nth-child(15), &:nth-child(14),
+      &:nth-child(12), &:nth-child(11), &:nth-child(10),
+      &:nth-child(8), &:nth-child(7), &:nth-child(6),
+      &:nth-child(4), &:nth-child(3), &:nth-child(2) {
+        display: none;
+      }
+    }
   }
   .compass {
     width: 16px;
@@ -324,3 +338,5 @@ only screen and (                min-resolution: 2dppx) {
     background-size: 300px auto;
   }
 }
+
+// TODO At larger sizes, show more table rows
