@@ -8,8 +8,9 @@ directives.directive 'refresh', [
       scope.refresh = ($event) ->
         $event.preventDefault()
         $event.stopPropagation()
-        # Publish a refresh event
-        $rootScope.$emit 'refresh'
+        unless scope.loading is true
+          # Publish a refresh event
+          $rootScope.$emit 'refresh'
 ]
 
 
