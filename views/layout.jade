@@ -17,5 +17,9 @@ html(ng-app="buoysApp.app")
     base(href="/")
     title Buoys
     != css('app')
-  body
+  body(ng-class="{loading: loading}")
     block body
+
+    .loadingNotification
+      span Loading...
+

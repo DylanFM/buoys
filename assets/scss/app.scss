@@ -17,6 +17,30 @@ body {
   color: desaturate(darken($yellow, 75), 60);
   font-family: "proxima-nova-soft", sans-serif;
   font-weight: 400;
+
+  &.loading .loadingNotification {
+    display: block;
+  }
+}
+
+.loadingNotification {
+  display: none; // Shown when loading
+  width: 100%;
+  position: absolute;
+  top: 60px;
+  text-align: center;
+
+  span {
+    @include border-radius(5px);
+    display: inline-block;
+    padding: .5em 1em;
+    background: transparentize(#009ea2, 0.4);
+    border: 2px solid transparentize(#009ea2, 0.3);
+    font-size: 24px;
+    font-weight: 400;
+    color: #fff;
+    text-shadow: 0 1px 4px transparentize(#007d80, 0.8);
+  }
 }
 
 b {
