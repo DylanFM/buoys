@@ -41,16 +41,17 @@ directives.directive 'historyGraph', [
           return unless raw?.length
           values = JSON.parse(raw)
           $.map values, (n,i) -> 
+            value = 0
             # If we have a value, return it as a float 
-            return parseFloat(n, 10) if n
+            value = parseFloat(n, 10) if n
             # We don't have a value
             # If there's a previous value
             # use the previous value
-            return parseFloat(values[i-1]) if i > 0
+            value = parseFloat(values[i-1]) if i > 0
             # Otherwise use the next value
-            return parseFloat(values[i+1]) if values[i+1]
+            value = parseFloat(values[i+1]) if values[i+1]
             # Fall back to 0
-            0
+            if isNaN(value) then 0 else value
         # Function for getting a line
         getLine = (data, width, height) ->
           min    = d3.min data
