@@ -9,7 +9,7 @@ app = module.exports = express()
 app.configure ->
   app.set 'views', "#{__dirname}/views"
   app.set 'view engine', 'jade'
-  app.use require('connect-assets')()
+  app.use require('connect-assets') build: no
   app.use express.static "#{__dirname}/public"
   app.use app.router
 
