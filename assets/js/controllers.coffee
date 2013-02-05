@@ -3,7 +3,7 @@ controllers = angular.module 'buoysApp.controllers', ['buoysApp.services', 'buoy
 
 # Display buoys index
 controllers.controller 'BuoysCtrl', [
-  '$rootScope', '$scope', 'Buoy', 'gauges'
+  '$rootScope', '$scope', 'Buoy', 'gauges', 'loading'
   ($rootScope, $scope, Buoy) ->
     Buoy.query().then (buoys) -> $scope.buoys = buoys
 
@@ -15,7 +15,7 @@ controllers.controller 'BuoysCtrl', [
 
 # Display a buoy's page
 controllers.controller 'BuoyCtrl', [
-  '$rootScope', '$scope', '$routeParams', 'Buoy', 'gauges'
+  '$rootScope', '$scope', '$routeParams', 'Buoy', 'gauges', 'loading'
   ($rootScope, $scope, $routeParams, Buoy) ->
     Buoy.get($routeParams.slug).then (buoy) -> $scope.buoy = buoy
 
