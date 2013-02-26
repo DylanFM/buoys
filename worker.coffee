@@ -21,9 +21,9 @@ Buoy.all (err, buoys) ->
     do (buoy, now) ->
       console.log "#{buoy.name} - fetching graph from #{buoy.url}"
 
-      try
-        # Parse the buoy's graph
-        parseMHLGraph buoy.url, (err, conditions) ->
+      # Parse the buoy's graph
+      parseMHLGraph buoy.url, (err, conditions) ->
+        try
 
           throw new Error(err) if err
 
@@ -53,6 +53,7 @@ Buoy.all (err, buoys) ->
           client.ltrim recentKey, 0, 50
 
           client.quit()
-      catch error
-        console.log "#{buoy.name} - error", error
-        bugsnag.notify new Error(error) if bugsnag
+
+        catch error
+          console.log "#{buoy.name} - error", error
+          bugsnag.notify new Error(error) if bugsnag
