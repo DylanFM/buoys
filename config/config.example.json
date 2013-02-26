@@ -1,4 +1,6 @@
 {
+  "APPLICATION_NAME": "Buoys development",
   "OPENREDIS_URL": "redis://:password@host:port",
-  "BUGSNAG_API_KEY": "topsecret"
+  "BUGSNAG_API_KEY": "topsecret",
+  "NODEFLY_APPLICATION_KEY": "secret!"
 }

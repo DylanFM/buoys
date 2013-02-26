@@ -1,4 +1,7 @@
 config    = require './config/'
+
+require('nodefly').profile config.get('NODEFLY_APPLICATION_KEY'), [config.get('APPLICATION_NAME'),'Heroku']
+
 express   = require 'express'
 routes    = require './routes'
 apiRoutes = require './routes/api'

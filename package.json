@@ -29,7 +29,8 @@
     "moment": "~2.0.x",
     "underscore": "~1.4.x",
     "nconf": "~0.6.x",
-    "bugsnag": "~0.1.x"
+    "bugsnag": "~0.1.x",
+    "nodefly": "stable"
   },
   "devDependencies": {
     "mocha": "~1.8.x",
