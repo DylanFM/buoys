@@ -1,4 +1,4 @@
-config  = require '../config'
+config  = require '../config/'
 redis   = require 'redis'
 moment  = require 'moment'
 _       = require 'underscore'
@@ -12,6 +12,10 @@ class Buoy
 
     # Get all buoys we're tracking
     client.zrange 'buoys', 0, -1, (err, slugs) ->
+
+      unless slugs?.length
+        done new Error("There aren't any buoy slugs to query in redis.")
+      
       buoys = null
 
       # Get each buoy's info

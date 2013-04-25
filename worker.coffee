@@ -14,6 +14,9 @@ if config.get('NODE_ENV') is 'production'
 
 # Get all buoys
 Buoy.all (err, buoys) ->
+
+  throw err if err
+
   # Loop through each buoy
   for buoy in buoys
 
