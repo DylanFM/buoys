@@ -8,7 +8,6 @@ class Buoy
   @all: (done) ->
 
     client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
-    console.log 'auth', config.get('REDIS_AUTH')
     client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
 
     client.on 'ready', ->
