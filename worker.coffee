@@ -49,7 +49,7 @@ Buoy.all (err, buoys) ->
           conditions[item[0]] = '' + item[1] for item in _.pairs(conditions)
 
           client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
-          client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
+          client.auth(config.get('REDIS_AUTH'), (-> return)) if config.get('REDIS_AUTH')
 
           client.on 'ready', ->
 
