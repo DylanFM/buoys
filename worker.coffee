@@ -13,6 +13,11 @@ if config.get('NODE_ENV') is 'production'
   bugsnag = require 'bugsnag'
   bugsnag.register(config.get('BUGSNAG_API_KEY')) 
 
+# Let's keep this snappy
+setTimeout ->
+  process.exit(1)
+, 20000
+
 # Get all buoys
 Buoy.all (err, buoys) ->
 
@@ -67,3 +72,4 @@ Buoy.all (err, buoys) ->
         catch error
           console.log "#{buoy.name} - error", error
           bugsnag.notify new Error(error) if bugsnag
+          process.exit()
