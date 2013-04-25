@@ -1,6 +1,7 @@
 config    = require './config/'
 
-require('nodefly').profile config.get('NODEFLY_APPLICATION_KEY'), [config.get('APPLICATION_NAME'),'Heroku']
+if config.get('NODE_ENV') is 'production'
+  require('nodefly').profile config.get('NODEFLY_APPLICATION_KEY'), [config.get('APPLICATION_NAME'),'Heroku']
 
 Buoy          = require './models/buoy'
 redis         = require 'redis'
@@ -16,6 +17,7 @@ if config.get('NODE_ENV') is 'production'
 Buoy.all (err, buoys) ->
 
   throw err if err
+  bugsnag.notify new Error(error) if bugsnag
 
   # Loop through each buoy
   for buoy in buoys
@@ -44,21 +46,23 @@ Buoy.all (err, buoys) ->
           client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
           client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
 
-          key = "buoys:#{buoy.slug}:#{now.year()}:#{now.month()}:#{now.date()}:#{now.hours()}:#{now.minutes()}"
+          client.on 'ready', ->
 
-          # Store the graph's data and timestamp in
-          #  - buoys:slug:latest
-          client.hmset "buoys:#{buoy.slug}:latest", conditions
-          #  - buoys:slug:yyyy:mm:dd:hh::mm
-          client.hmset key, conditions
+            key = "buoys:#{buoy.slug}:#{now.year()}:#{now.month()}:#{now.date()}:#{now.hours()}:#{now.minutes()}"
 
-          # Store key in buoys:slug:recent list
-          recentKey = "buoys:#{buoy.slug}:recent"
-          client.lpush recentKey, key
-          # Ensure recent list only has up to 50 items
-          client.ltrim recentKey, 0, 50
+            # Store the graph's data and timestamp in
+            #  - buoys:slug:latest
+            client.hmset "buoys:#{buoy.slug}:latest", conditions
+            #  - buoys:slug:yyyy:mm:dd:hh::mm
+            client.hmset key, conditions
 
-          client.quit()
+            # Store key in buoys:slug:recent list
+            recentKey = "buoys:#{buoy.slug}:recent"
+            client.lpush recentKey, key
+            # Ensure recent list only has up to 50 items
+            client.ltrim recentKey, 0, 50
+
+            client.quit()
 
         catch error
           console.log "#{buoy.name} - error", error
