@@ -8,7 +8,7 @@ class Buoy
   @all: (done) ->
 
     client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
-    client.auth(config.get('REDIS_AUTH'), (-> return)) if config.get('REDIS_AUTH')
+    client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
 
     client.on 'ready', ->
 
@@ -52,7 +52,7 @@ class Buoy
   @findBySlug: (slug, done) ->
 
     client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
-    client.auth(config.get('REDIS_AUTH'), (-> return)) if config.get('REDIS_AUTH')
+    client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
 
     client.on 'ready', ->
 
@@ -80,7 +80,7 @@ class Buoy
       done new Error('Cannot request more than 50 items from history')
 
     client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
-    client.auth(config.get('REDIS_AUTH'), (-> return)) if config.get('REDIS_AUTH')
+    client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
 
     client.on 'ready', ->
 
