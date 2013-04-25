@@ -22,7 +22,7 @@ setTimeout ->
 Buoy.all (err, buoys) ->
 
   throw err if err
-  bugsnag.notify new Error(error) if bugsnag
+  bugsnag.notify new Error(err) if bugsnag
 
   # Loop through each buoy
   for buoy in buoys
