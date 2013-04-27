@@ -4,6 +4,7 @@ if config.get('NODE_ENV') is 'production'
   require('nodefly').profile config.get('NODEFLY_APPLICATION_KEY'), [config.get('APPLICATION_NAME'),'Heroku']
 
 Buoy          = require './models/buoy'
+Q             = require 'q'
 redis         = require 'redis'
 moment        = require 'moment'
 parseMHLGraph = require 'mhl-buoy-data'
@@ -13,63 +14,100 @@ if config.get('NODE_ENV') is 'production'
   bugsnag = require 'bugsnag'
   bugsnag.register(config.get('BUGSNAG_API_KEY')) 
 
-# Let's keep this snappy
-setTimeout ->
-  process.exit(1)
-, 20000
+# Fetches buoys from redis
+getBuoys = ->
+  deferred = Q.defer()
 
-# Get all buoys
-Buoy.all (err, buoys) ->
+  # Get all buoys
+  Buoy.all (err, buoys) ->
+    if err
+      deferred.reject new Error(err)
+    else
+      deferred.resolve buoys
 
-  throw err if err
-  bugsnag.notify new Error(err) if bugsnag
+  deferred.promise
 
-  # Loop through each buoy
-  for buoy in buoys
+# Fetches the latest records for a buoy, returns a promise
+fetchBuoyLatest = (buoy) ->
 
-    # Make note of the time
-    now = moment()
-    now.utc() # It should be in UTC for DB storage
+  console.log "#{buoy.name} - fetching graph from #{buoy.url}"
 
-    do (buoy, now) ->
-      console.log "#{buoy.name} - fetching graph from #{buoy.url}"
+  now = moment().utc() # Make note of time (in UTC for DB storage)
 
-      # Parse the buoy's graph
-      parseMHLGraph buoy.url, (err, conditions) ->
-        try
+  deferred = Q.defer()
 
-          throw new Error(err) if err
+  # Parse the buoy's graph
+  parseMHLGraph buoy.url, (err, conditions) ->
+    if err
+      deferred.reject new Error(err)
+    else
+      deferred.resolve [buoy, conditions, now]
 
-          console.log "#{buoy.name} - graph parsed, storing in redis", conditions
+  deferred
+    .promise
+    .timeout 2500, "Timeout (2500ms) fetching #{buoy.name}'s graph" # We don't want this taking ages
 
-          conditions.created_at = now.valueOf()
+# Updates a buoy with conditions
+updateBuoy = (update) ->
 
-          # Issue with node redis in storing this object as a hash
-          # Going to cast values of object
-          conditions[item[0]] = '' + item[1] for item in _.pairs(conditions)
+  deferred = Q.defer()
 
-          client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
-          client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
+  try
 
-          client.on 'ready', ->
+    [buoy, conditions, now] = update
 
-            key = "buoys:#{buoy.slug}:#{now.year()}:#{now.month()}:#{now.date()}:#{now.hours()}:#{now.minutes()}"
+    console.log "#{buoy.name} - graph parsed, storing in redis", conditions
 
-            # Store the graph's data and timestamp in
-            #  - buoys:slug:latest
-            client.hmset "buoys:#{buoy.slug}:latest", conditions
-            #  - buoys:slug:yyyy:mm:dd:hh::mm
-            client.hmset key, conditions
+    conditions.created_at = now.valueOf()
 
-            # Store key in buoys:slug:recent list
-            recentKey = "buoys:#{buoy.slug}:recent"
-            client.lpush recentKey, key
-            # Ensure recent list only has up to 50 items
-            client.ltrim recentKey, 0, 50
+    # Issue with node redis in storing this object as a hash
+    # Going to cast values of object
+    conditions[item[0]] = '' + item[1] for item in _.pairs(conditions)
 
-            client.quit()
+    key = "buoys:#{buoy.slug}:#{now.year()}:#{now.month()}:#{now.date()}:#{now.hours()}:#{now.minutes()}"
 
-        catch error
-          console.log "#{buoy.name} - error", error
-          bugsnag.notify new Error(error) if bugsnag
-          process.exit()
+    # Hello redis client
+    client = redis.createClient(config.get('REDIS_PORT'), config.get('REDIS_HOSTNAME'))
+    client.auth(config.get('REDIS_AUTH')) if config.get('REDIS_AUTH')
+
+    client.on 'ready', ->
+
+      # Store the graph's data and timestamp in
+      #  - buoys:slug:latest
+      client.hmset "buoys:#{buoy.slug}:latest", conditions
+      #  - buoys:slug:yyyy:mm:dd:hh::mm
+      client.hmset key, conditions
+
+      # Store key in buoys:slug:recent list
+      recentKey = "buoys:#{buoy.slug}:recent"
+      client.lpush recentKey, key
+      # Ensure recent list only has up to 50 items
+      client.ltrim recentKey, 0, 50
+
+      client.quit()
+
+      deferred.resolve()
+
+  catch err
+    deferred.reject err
+
+  deferred.promise
+
+
+# Get things going...
+getBuoys()
+  .then (buoys) ->
+    Q.allResolved _.map(buoys, fetchBuoyLatest) # Get the latest buoy data
+  .then (promises) ->
+    updates = _.map promises, (promise) ->
+      if promise.isFulfilled()
+        updateBuoy promise.valueOf()
+      else
+        bugsnag.notify promise.valueOf().exception if bugsnag
+        null # Just remember promises in this array
+    Q.allResolved _.compact updates
+  .fail (error) ->
+    console.log error
+    bugsnag.notify new Error(error) if bugsnag
+  .finally ->
+    process.exit()
