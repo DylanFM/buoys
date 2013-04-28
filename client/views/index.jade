@@ -1,18 +1,32 @@
-extends layout
+!!!
+html(ng-app="buoysApp.app")
+  head
+    meta(charset='utf8')
+    meta(name="viewport", content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1")
+    meta(name="apple-mobile-web-app-capable", content="yes")
+    meta(name="apple-touch-fullscreen", content="yes")
+    meta(name="fragment", content="!")
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    link(rel="apple-touch-icon-precomposed", sizes="144x144", href="/apple-touch-icon-144x144-precomposed.png")
+    <!-- For iPhone with high-resolution Retina display: -->
+    link(rel="apple-touch-icon-precomposed", sizes="114x114", href="/apple-touch-icon-114x114-precomposed.png")
+    <!-- For first- and second-generation iPad: -->
+    link(rel="apple-touch-icon-precomposed", sizes="72x72", href="/apple-touch-icon-72x72-precomposed.png")
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    link(rel="apple-touch-icon-precomposed", href="/apple-touch-icon-precomposed.png")
+    base(href="/")
+    title Buoys
+  body(ng-class="{loading: loading}")
+    header
+      h1 
+        a(ng-href="/", title="Go to the buoys list") Buoys
+      a.home(ng-href="/", title="Go to the buoys list") Home
+      a.refresh(refresh="true", href="", ng-click="refresh($event)", title="Check for new conditions") Refresh
 
-block body
-  header
-    h1 
-      a(ng-href="/", title="Go to the buoys list") Buoys
-    a.home(ng-href="/", title="Go to the buoys list") Home
-    a.refresh(refresh="true", href="", ng-click="refresh($event)", title="Check for new conditions") Refresh
+    .view(ng-view)
 
-  .view(ng-view)
-
-  footer
-    a.copyright(ng-href="http://new.mhl.nsw.gov.au/data/realtime/wave/", tite="Manly Hydraulics Labratory") Data © NSW Public Works
-    | &nbsp;|&nbsp;
-    a.about(ng-href="/about", title="Read all about this app") About this app
-    .affil This site is not affiliated with NSW Public Works.
-
-  != js('app')
+    footer
+      a.copyright(ng-href="http://new.mhl.nsw.gov.au/data/realtime/wave/", tite="Manly Hydraulics Labratory") Data © NSW Public Works
+      | &nbsp;|&nbsp;
+      a.about(ng-href="/about", title="Read all about this app") About this app
+      .affil This site is not affiliated with NSW Public Works.
