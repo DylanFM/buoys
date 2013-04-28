@@ -45,7 +45,7 @@ fetchBuoyLatest = (buoy) ->
 
   deferred
     .promise
-    .timeout 2500, "Timeout (2500ms) fetching #{buoy.name}'s graph" # We don't want this taking ages
+    .timeout 3000, "Timeout (3s) fetching #{buoy.name}'s graph" # We don't want this taking ages
 
 # Updates a buoy with conditions
 updateBuoy = (update) ->
