@@ -4,27 +4,18 @@ if config.get('NODE_ENV') is 'production'
   require('nodefly').profile config.get('NODEFLY_APPLICATION_KEY'), [config.get('APPLICATION_NAME'),'Heroku']
 
 express   = require 'express'
-routes    = require './routes'
 apiRoutes = require './routes/api'
 bugsnag   = require 'bugsnag'
 
 app = module.exports = express()
 
 app.configure ->
-  app.set 'views', "#{__dirname}/views"
-  app.set 'view engine', 'jade'
-  app.use require('connect-assets') build: no
-  app.use express.static "#{__dirname}/public"
   app.use app.router
 
   # Handle 404s
   # Using example error-pages from express repo
   app.use (req, res, next) ->
     res.status 404
-
-    if req.accepts 'html'
-      res.render '404', url: req.url
-      return
 
     res.send error: 'Not found' if req.accepts 'json'
 
@@ -36,17 +27,15 @@ app.configure 'development', ->
 app.configure 'production', ->
   app.use bugsnag.register(config.get('BUGSNAG_API_KEY'))
   app.use express.errorHandler()
+
   # Handle 500s
   app.use (err, req, res, next) ->
     res.status err.status or 500
-    res.render '500', error: err
+    res.send error: err if req.accepts 'json'
+
+    res.type('txt').send err
 
 # Routes
-app.get '/', routes.index
-app.get '/:slug', routes.index
-
-app.get '/partials/:name', routes.partials # Angular templates
-
 app.get '/api/buoys', apiRoutes.buoys
 app.get '/api/buoys/:slug', apiRoutes.buoy
 app.get '/api/buoys/:slug/history', apiRoutes.buoyHistory

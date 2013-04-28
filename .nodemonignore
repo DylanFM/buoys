@@ -1,9 +1,7 @@
 .git/*
-assets/*
+client/*
 test/*
-views/*
 db/*
-public/*
 .DS_Store
 .gitignore
 README.*
